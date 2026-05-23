@@ -1,0 +1,104 @@
+# =========================
+# PYTHON
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+agent_venv/
+stt_venv/
+tts_venv/
+venv/
+.env/
+
+# =========================
+# NODE
+# =========================
+node_modules/
+
+# =========================
+# VS CODE
+# =========================
+.vscode/
+
+# =========================
+# LOGS
+# =========================
+logs/
+*.log
+
+# =========================
+# MODELS / AI WEIGHTS
+# =========================
+models/
+
+# If you later want partial tracking:
+# !models/README.md
+
+# Common AI model formats
+*.ckpt
+*.pth
+*.pt
+*.bin
+*.onnx
+*.safetensors
+*.gguf
+
+# =========================
+# WHISPER CACHE
+# =========================
+.cache/
+*.lock
+.locks/
+
+# =========================
+# AUDIO OUTPUTS
+# =========================
+audio/output.wav
+audio/*.mp3
+audio/generated/
+
+# Optional:
+# ignore all generated wavs
+# audio/*.wav
+
+# =========================
+# RVC OUTPUTS
+# =========================
+rvc/
+checkpoints/
+
+# =========================
+# XTTS GENERATED FILES
+# =========================
+xtts/output/
+xtts/cache/
+
+# =========================
+# EMBEDDINGS / VECTOR DB
+# =========================
+embeddings/
+memory/
+
+# =========================
+# API KEYS / SECRETS
+# =========================
+.env
+*.env
+apikeys.txt
+secrets.json
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# TEMP FILES
+# =========================
+temp/
+tmp/
+*.tmp

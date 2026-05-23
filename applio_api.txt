@@ -1,0 +1,1897 @@
+Client.predict() Usage Info
+---------------------------
+Named API endpoints: 211
+
+ - predict(filter_text, api_name="/filter_dropdowns") -> (voice_model, index_file)
+    Parameters:
+     - [Textbox] filter_text: str (required)  
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(_, api_name="/update_filter_visibility") -> (filter, voice_model, index_file)
+    Parameters:
+     - [Textbox] _: str (required)  
+    Returns:
+     - [Textbox] filter: str 
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(api_name="/lambda") -> (voice_model, index_file)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(model_file_value, api_name="/lambda_1") -> index_file
+    Parameters:
+     - [Dropdown] model_file_value: Literal[] (required)  
+    Returns:
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(file_path, api_name="/import_presets_button") -> select_custom_preset
+    Parameters:
+     - [File] file_path: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Dropdown] select_custom_preset: Literal['Default', 'Good for Anything', 'Music'] 
+
+ - predict(api_name="/refresh_presets") -> select_custom_preset
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] select_custom_preset: Literal['Default', 'Good for Anything', 'Music'] 
+
+ - predict(preset, api_name="/update_sliders") -> (pitch, search_feature_ratio, volume_envelope, protect_voiceless_consonants)
+    Parameters:
+     - [Dropdown] preset: Literal['Default', 'Good for Anything', 'Music'] (not required, defaults to:   Default)  
+    Returns:
+     - [Slider] pitch: float (numeric value between -24 and 24) 
+     - [Slider] search_feature_ratio: float (numeric value between 0 and 1) 
+     - [Slider] volume_envelope: float (numeric value between 0 and 1) 
+     - [Slider] protect_voiceless_consonants: float (numeric value between 0 and 0.5) 
+
+ - predict(preset_name, pitch, index_rate, rms_mix_rate, protect, api_name="/export_presets_button") -> 
+    Parameters:
+     - [Textbox] preset_name: str (required)  
+     - [Slider] pitch: float (not required, defaults to:   0)  
+     - [Slider] index_rate: float (not required, defaults to:   0.75)  
+     - [Slider] rms_mix_rate: float (not required, defaults to:   1)  
+     - [Slider] protect: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(file_path, api_name="/import_presets_button_1") -> select_custom_preset
+    Parameters:
+     - [File] file_path: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Dropdown] select_custom_preset: Literal[] 
+
+ - predict(api_name="/refresh_presets_1") -> select_custom_preset
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] select_custom_preset: Literal[] 
+
+ - predict(preset, api_name="/update_sliders_1") -> (pitch, search_feature_ratio, volume_envelope, protect_voiceless_consonants)
+    Parameters:
+     - [Dropdown] preset: Literal[] (required)  
+    Returns:
+     - [Slider] pitch: float (numeric value between -24 and 24) 
+     - [Slider] search_feature_ratio: float (numeric value between 0 and 1) 
+     - [Slider] volume_envelope: float (numeric value between 0 and 1) 
+     - [Slider] protect_voiceless_consonants: float (numeric value between 0 and 0.5) 
+
+ - predict(preset_name, pitch, index_rate, rms_mix_rate, protect, api_name="/export_presets_button_1") -> 
+    Parameters:
+     - [Textbox] preset_name: str (required)  
+     - [Slider] pitch: float (not required, defaults to:   0)  
+     - [Slider] index_rate: float (not required, defaults to:   0.75)  
+     - [Slider] rms_mix_rate: float (not required, defaults to:   1)  
+     - [Slider] protect: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(api_name="/stop_infer") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(checkbox, api_name="/toggle_visible") -> autotune_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] autotune_strength: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_1") -> proposed_pitch_threshold
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] proposed_pitch_threshold: float (numeric value between 50.0 and 1200.0) 
+
+ - predict(checkbox, api_name="/toggle_visible_2") -> proposed_pitch_threshold
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] proposed_pitch_threshold: float (numeric value between 50.0 and 1200.0) 
+
+ - predict(checkbox, api_name="/toggle_visible_3") -> clean_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] clean_strength: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_formant_shifting") -> (browse_presets_for_formanting, quefrency_for_formant_shifting, timbre_for_formant_shifting)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Dropdown] browse_presets_for_formanting: Literal['f2m', 'm2f', 'random'] 
+     - [Slider] quefrency_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+     - [Slider] timbre_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+
+ - predict(checkbox, api_name="/toggle_visible_formant_shifting_1") -> (browse_presets_for_formanting, quefrency_for_formant_shifting, timbre_for_formant_shifting)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Dropdown] browse_presets_for_formanting: Literal['f2m', 'm2f', 'random'] 
+     - [Slider] quefrency_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+     - [Slider] timbre_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+
+ - predict(api_name="/refresh_formant") -> browse_presets_for_formanting
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] browse_presets_for_formanting: Literal['f2m', 'm2f', 'random'] 
+
+ - predict(preset, api_name="/update_sliders_formant") -> (quefrency_for_formant_shifting, timbre_for_formant_shifting)
+    Parameters:
+     - [Dropdown] preset: Literal['f2m', 'm2f', 'random'] (not required, defaults to:   f2m)  
+    Returns:
+     - [Slider] quefrency_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+     - [Slider] timbre_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+
+ - predict(preset, api_name="/update_sliders_formant_1") -> (quefrency_for_formant_shifting, timbre_for_formant_shifting)
+    Parameters:
+     - [Dropdown] preset: Literal['f2m', 'm2f', 'random'] (not required, defaults to:   f2m)  
+    Returns:
+     - [Slider] quefrency_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+     - [Slider] timbre_for_formant_shifting: float (numeric value between 0.0 and 16.0) 
+
+ - predict(checkbox, api_name="/post_process_visible") -> (reverb, pitch_shift, limiter, gain, distortion, chorus, bitcrush, clipping, compressor, delay)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Checkbox] reverb: bool 
+     - [Checkbox] pitch_shift: bool 
+     - [Checkbox] limiter: bool 
+     - [Checkbox] gain: bool 
+     - [Checkbox] distortion: bool 
+     - [Checkbox] chorus: bool 
+     - [Checkbox] bitcrush: bool 
+     - [Checkbox] clipping: bool 
+     - [Checkbox] compressor: bool 
+     - [Checkbox] delay: bool 
+
+ - predict(checkbox, api_name="/reverb_visible") -> (reverb_room_size, reverb_damping, reverb_wet_gain, reverb_dry_gain, reverb_width, reverb_freeze_mode)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] reverb_room_size: float (numeric value between 0 and 1) 
+     - [Slider] reverb_damping: float (numeric value between 0 and 1) 
+     - [Slider] reverb_wet_gain: float (numeric value between 0 and 1) 
+     - [Slider] reverb_dry_gain: float (numeric value between 0 and 1) 
+     - [Slider] reverb_width: float (numeric value between 0 and 1) 
+     - [Slider] reverb_freeze_mode: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_4") -> pitch_shift_semitones
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] pitch_shift_semitones: float (numeric value between -12 and 12) 
+
+ - predict(checkbox, api_name="/limiter_visible") -> (limiter_threshold_db, limiter_release_time)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] limiter_threshold_db: float (numeric value between -60 and 0) 
+     - [Slider] limiter_release_time: float (numeric value between 0.01 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_5") -> gain_db
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] gain_db: float (numeric value between -60 and 60) 
+
+ - predict(checkbox, api_name="/toggle_visible_6") -> distortion_gain
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] distortion_gain: float (numeric value between -60 and 60) 
+
+ - predict(checkbox, api_name="/chorus_visible") -> (chorus_rate_hz, chorus_depth, chorus_center_delay_ms, chorus_feedback, chorus_mix)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] chorus_rate_hz: float (numeric value between 0 and 100) 
+     - [Slider] chorus_depth: float (numeric value between 0 and 1) 
+     - [Slider] chorus_center_delay_ms: float (numeric value between 7 and 8) 
+     - [Slider] chorus_feedback: float (numeric value between 0 and 1) 
+     - [Slider] chorus_mix: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/bitcrush_visible") -> bitcrush_bit_depth
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] bitcrush_bit_depth: float (numeric value between 1 and 32) 
+
+ - predict(checkbox, api_name="/toggle_visible_7") -> clipping_threshold
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] clipping_threshold: float (numeric value between -60 and 0) 
+
+ - predict(checkbox, api_name="/compress_visible") -> (compressor_threshold_db, compressor_ratio, compressor_attack_ms, compressor_release_ms)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] compressor_threshold_db: float (numeric value between -60 and 0) 
+     - [Slider] compressor_ratio: float (numeric value between 1 and 20) 
+     - [Slider] compressor_attack_ms: float (numeric value between 0.0 and 100) 
+     - [Slider] compressor_release_ms: float (numeric value between 0.01 and 100) 
+
+ - predict(checkbox, api_name="/delay_visible") -> (delay_seconds, delay_feedback, delay_mix)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] delay_seconds: float (numeric value between 0.0 and 5.0) 
+     - [Slider] delay_feedback: float (numeric value between 0.0 and 1.0) 
+     - [Slider] delay_mix: float (numeric value between 0.0 and 1.0) 
+
+ - predict(checkbox, api_name="/post_process_visible_1") -> (reverb, pitch_shift, limiter, gain, distortion, chorus, bitcrush, clipping, compressor, delay)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Checkbox] reverb: bool 
+     - [Checkbox] pitch_shift: bool 
+     - [Checkbox] limiter: bool 
+     - [Checkbox] gain: bool 
+     - [Checkbox] distortion: bool 
+     - [Checkbox] chorus: bool 
+     - [Checkbox] bitcrush: bool 
+     - [Checkbox] clipping: bool 
+     - [Checkbox] compressor: bool 
+     - [Checkbox] delay: bool 
+
+ - predict(checkbox, api_name="/reverb_visible_1") -> (reverb_room_size, reverb_damping, reverb_wet_gain, reverb_dry_gain, reverb_width, reverb_freeze_mode)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] reverb_room_size: float (numeric value between 0 and 1) 
+     - [Slider] reverb_damping: float (numeric value between 0 and 1) 
+     - [Slider] reverb_wet_gain: float (numeric value between 0 and 1) 
+     - [Slider] reverb_dry_gain: float (numeric value between 0 and 1) 
+     - [Slider] reverb_width: float (numeric value between 0 and 1) 
+     - [Slider] reverb_freeze_mode: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_8") -> pitch_shift_semitones
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] pitch_shift_semitones: float (numeric value between -12 and 12) 
+
+ - predict(checkbox, api_name="/limiter_visible_1") -> (limiter_threshold_db, limiter_release_time)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] limiter_threshold_db: float (numeric value between -60 and 0) 
+     - [Slider] limiter_release_time: float (numeric value between 0.01 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_9") -> gain_db
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] gain_db: float (numeric value between -60 and 60) 
+
+ - predict(checkbox, api_name="/toggle_visible_10") -> distortion_gain
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] distortion_gain: float (numeric value between -60 and 60) 
+
+ - predict(checkbox, api_name="/chorus_visible_1") -> (chorus_rate_hz, chorus_depth, chorus_center_delay_ms, chorus_feedback, chorus_mix)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] chorus_rate_hz: float (numeric value between 0 and 100) 
+     - [Slider] chorus_depth: float (numeric value between 0 and 1) 
+     - [Slider] chorus_center_delay_ms: float (numeric value between 7 and 8) 
+     - [Slider] chorus_feedback: float (numeric value between 0 and 1) 
+     - [Slider] chorus_mix: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/bitcrush_visible_1") -> bitcrush_bit_depth
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] bitcrush_bit_depth: float (numeric value between 1 and 32) 
+
+ - predict(checkbox, api_name="/toggle_visible_11") -> clipping_threshold
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] clipping_threshold: float (numeric value between -60 and 0) 
+
+ - predict(checkbox, api_name="/compress_visible_1") -> (compressor_threshold_db, compressor_ratio, compressor_attack_ms, compressor_release_ms)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] compressor_threshold_db: float (numeric value between -60 and 0) 
+     - [Slider] compressor_ratio: float (numeric value between 1 and 20) 
+     - [Slider] compressor_attack_ms: float (numeric value between 0.0 and 100) 
+     - [Slider] compressor_release_ms: float (numeric value between 0.01 and 100) 
+
+ - predict(checkbox, api_name="/delay_visible_1") -> (delay_seconds, delay_feedback, delay_mix)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] delay_seconds: float (numeric value between 0.0 and 5.0) 
+     - [Slider] delay_feedback: float (numeric value between 0.0 and 1.0) 
+     - [Slider] delay_mix: float (numeric value between 0.0 and 1.0) 
+
+ - predict(checkbox, api_name="/toggle_visible_12") -> autotune_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] autotune_strength: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_13") -> clean_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] clean_strength: float (numeric value between 0 and 1) 
+
+ - predict(model, api_name="/change_choices") -> (voice_model, index_file, select_audio, speaker_id, speaker_id)
+    Parameters:
+     - [Dropdown] model: Literal[] (required)  
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+     - [Dropdown] select_audio: Literal[] 
+     - [Dropdown] speaker_id: Literal['0'] 
+     - [Dropdown] speaker_id: Literal['0'] 
+
+ - predict(filter_text, api_name="/filter_dropdowns_1") -> (voice_model, index_file)
+    Parameters:
+     - [Textbox] filter_text: str (required)  
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(input_audio_path, api_name="/output_path_fn") -> output_path
+    Parameters:
+     - [Dropdown] input_audio_path: Literal[] (not required, defaults to:   )  
+    Returns:
+     - [Textbox] output_path: str 
+
+ - predict(upload_audio, api_name="/save_to_wav2") -> (select_audio, output_path)
+    Parameters:
+     - [Audio] upload_audio: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Dropdown] select_audio: Literal[] 
+     - [Textbox] output_path: str 
+
+ - predict(record_button, api_name="/save_to_wav") -> (select_audio, output_path)
+    Parameters:
+     - [Audio] record_button: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Dropdown] select_audio: Literal[] 
+     - [Textbox] output_path: str 
+
+ - predict(api_name="/delete_outputs") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(api_name="/delete_outputs_1") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(embedder_model, api_name="/toggle_visible_embedder_custom") -> 
+    Parameters:
+     - [Radio] embedder_model: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+    Returns:
+     - None
+
+ - predict(embedder_model, api_name="/toggle_visible_embedder_custom_1") -> 
+    Parameters:
+     - [Radio] embedder_model: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+    Returns:
+     - None
+
+ - predict(folder_name, bin_file, config_file, api_name="/create_folder_and_move_files") -> 
+    Parameters:
+     - [Textbox] folder_name: str (required)  
+     - [File] bin_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+     - [File] config_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - None
+
+ - predict(api_name="/lambda_2") -> select_custom_embedder
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] select_custom_embedder: Literal[] 
+
+ - predict(folder_name, bin_file, config_file, api_name="/create_folder_and_move_files_1") -> 
+    Parameters:
+     - [Textbox] folder_name: str (required)  
+     - [File] bin_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+     - [File] config_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - None
+
+ - predict(api_name="/lambda_3") -> select_custom_embedder
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] select_custom_embedder: Literal[] 
+
+ - predict(terms_accepted, param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, param_9, param_10, param_11, param_12, param_13, param_14, param_15, param_16, param_17, param_18, param_19, param_20, param_21, param_22, param_23, param_24, param_25, param_26, param_27, param_28, param_29, param_30, param_31, param_32, param_33, param_34, param_35, param_36, param_37, param_38, param_39, param_40, param_41, param_42, param_43, param_44, param_45, param_46, param_47, param_48, param_49, param_50, param_51, param_52, param_53, param_54, param_55, param_56, param_57, param_58, param_59, api_name="/enforce_terms") -> (output_information, export_audio)
+    Parameters:
+     - [Checkbox] terms_accepted: bool (not required, defaults to:   False)  
+     - [Slider] param_1: float (not required, defaults to:   0)  
+     - [Slider] param_2: float (not required, defaults to:   0.75)  
+     - [Slider] param_3: float (not required, defaults to:   1)  
+     - [Slider] param_4: float (not required, defaults to:   0.5)  
+     - [Radio] param_5: Literal['crepe', 'crepe-tiny', 'rmvpe', 'fcpe'] (not required, defaults to:   rmvpe)  
+     - [Dropdown] param_6: Literal[] (not required, defaults to:   )  
+     - [Textbox] param_7: str (not required, defaults to:   C:\AI\Tools\ApplioV3.6.2\assets\audios\output.wav)  
+     - [Dropdown] param_8: Literal[] (required)  
+     - [Dropdown] param_9: Literal[] (not required, defaults to:   )  
+     - [Checkbox] param_10: bool (not required, defaults to:   False)  
+     - [Checkbox] param_11: bool (not required, defaults to:   False)  
+     - [Slider] param_12: float (not required, defaults to:   1)  
+     - [Checkbox] param_13: bool (not required, defaults to:   False)  
+     - [Slider] param_14: float (not required, defaults to:   155.0)  
+     - [Checkbox] param_15: bool (not required, defaults to:   False)  
+     - [Slider] param_16: float (not required, defaults to:   0.5)  
+     - [Radio] param_17: Literal['WAV', 'MP3', 'FLAC', 'OGG', 'M4A'] (not required, defaults to:   WAV)  
+     - [Radio] param_18: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+     - [Dropdown] param_19: Literal[] (required)  
+     - [Checkbox] param_20: bool (not required, defaults to:   False)  
+     - [Slider] param_21: float (not required, defaults to:   1.0)  
+     - [Slider] param_22: float (not required, defaults to:   1.0)  
+     - [Checkbox] param_23: bool (not required, defaults to:   False)  
+     - [Checkbox] param_24: bool (not required, defaults to:   False)  
+     - [Checkbox] param_25: bool (not required, defaults to:   False)  
+     - [Checkbox] param_26: bool (not required, defaults to:   False)  
+     - [Checkbox] param_27: bool (not required, defaults to:   False)  
+     - [Checkbox] param_28: bool (not required, defaults to:   False)  
+     - [Checkbox] param_29: bool (not required, defaults to:   False)  
+     - [Checkbox] param_30: bool (not required, defaults to:   False)  
+     - [Checkbox] param_31: bool (not required, defaults to:   False)  
+     - [Checkbox] param_32: bool (not required, defaults to:   False)  
+     - [Checkbox] param_33: bool (not required, defaults to:   False)  
+     - [Slider] param_34: float (not required, defaults to:   0.5)  
+     - [Slider] param_35: float (not required, defaults to:   0.5)  
+     - [Slider] param_36: float (not required, defaults to:   0.33)  
+     - [Slider] param_37: float (not required, defaults to:   0.4)  
+     - [Slider] param_38: float (not required, defaults to:   1.0)  
+     - [Slider] param_39: float (not required, defaults to:   0.0)  
+     - [Slider] param_40: float (not required, defaults to:   0)  
+     - [Slider] param_41: float (not required, defaults to:   -6)  
+     - [Slider] param_42: float (not required, defaults to:   0.05)  
+     - [Slider] param_43: float (not required, defaults to:   0)  
+     - [Slider] param_44: float (not required, defaults to:   25)  
+     - [Slider] param_45: float (not required, defaults to:   1.0)  
+     - [Slider] param_46: float (not required, defaults to:   0.25)  
+     - [Slider] param_47: float (not required, defaults to:   7)  
+     - [Slider] param_48: float (not required, defaults to:   0.0)  
+     - [Slider] param_49: float (not required, defaults to:   0.5)  
+     - [Slider] param_50: float (not required, defaults to:   8)  
+     - [Slider] param_51: float (not required, defaults to:   -6)  
+     - [Slider] param_52: float (not required, defaults to:   0)  
+     - [Slider] param_53: float (not required, defaults to:   1)  
+     - [Slider] param_54: float (not required, defaults to:   1.0)  
+     - [Slider] param_55: float (not required, defaults to:   100)  
+     - [Slider] param_56: float (not required, defaults to:   0.5)  
+     - [Slider] param_57: float (not required, defaults to:   0.0)  
+     - [Slider] param_58: float (not required, defaults to:   0.5)  
+     - [Dropdown] param_59: Literal['0'] (not required, defaults to:   0)  
+    Returns:
+     - [Textbox] output_information: str 
+     - [Audio] export_audio: filepath 
+
+ - predict(terms_accepted, param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, param_9, param_10, param_11, param_12, param_13, param_14, param_15, param_16, param_17, param_18, param_19, param_20, param_21, param_22, param_23, param_24, param_25, param_26, param_27, param_28, param_29, param_30, param_31, param_32, param_33, param_34, param_35, param_36, param_37, param_38, param_39, param_40, param_41, param_42, param_43, param_44, param_45, param_46, param_47, param_48, param_49, param_50, param_51, param_52, param_53, param_54, param_55, param_56, param_57, param_58, param_59, api_name="/enforce_terms_batch") -> output_information
+    Parameters:
+     - [Checkbox] terms_accepted: bool (not required, defaults to:   False)  
+     - [Slider] param_1: float (not required, defaults to:   0)  
+     - [Slider] param_2: float (not required, defaults to:   0.75)  
+     - [Slider] param_3: float (not required, defaults to:   1)  
+     - [Slider] param_4: float (not required, defaults to:   0.5)  
+     - [Radio] param_5: Literal['crepe', 'crepe-tiny', 'rmvpe', 'fcpe'] (not required, defaults to:   rmvpe)  
+     - [Textbox] param_6: str (not required, defaults to:   C:\AI\Tools\ApplioV3.6.2\assets\audios)  
+     - [Textbox] param_7: str (not required, defaults to:   C:\AI\Tools\ApplioV3.6.2\assets\audios)  
+     - [Dropdown] param_8: Literal[] (required)  
+     - [Dropdown] param_9: Literal[] (not required, defaults to:   )  
+     - [Checkbox] param_10: bool (not required, defaults to:   False)  
+     - [Checkbox] param_11: bool (not required, defaults to:   False)  
+     - [Slider] param_12: float (not required, defaults to:   1)  
+     - [Checkbox] param_13: bool (not required, defaults to:   False)  
+     - [Slider] param_14: float (not required, defaults to:   155.0)  
+     - [Checkbox] param_15: bool (not required, defaults to:   False)  
+     - [Slider] param_16: float (not required, defaults to:   0.5)  
+     - [Radio] param_17: Literal['WAV', 'MP3', 'FLAC', 'OGG', 'M4A'] (not required, defaults to:   WAV)  
+     - [Radio] param_18: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+     - [Dropdown] param_19: Literal[] (required)  
+     - [Checkbox] param_20: bool (not required, defaults to:   False)  
+     - [Slider] param_21: float (not required, defaults to:   1.0)  
+     - [Slider] param_22: float (not required, defaults to:   1.0)  
+     - [Checkbox] param_23: bool (not required, defaults to:   False)  
+     - [Checkbox] param_24: bool (not required, defaults to:   False)  
+     - [Checkbox] param_25: bool (not required, defaults to:   False)  
+     - [Checkbox] param_26: bool (not required, defaults to:   False)  
+     - [Checkbox] param_27: bool (not required, defaults to:   False)  
+     - [Checkbox] param_28: bool (not required, defaults to:   False)  
+     - [Checkbox] param_29: bool (not required, defaults to:   False)  
+     - [Checkbox] param_30: bool (not required, defaults to:   False)  
+     - [Checkbox] param_31: bool (not required, defaults to:   False)  
+     - [Checkbox] param_32: bool (not required, defaults to:   False)  
+     - [Checkbox] param_33: bool (not required, defaults to:   False)  
+     - [Slider] param_34: float (not required, defaults to:   0.5)  
+     - [Slider] param_35: float (not required, defaults to:   0.5)  
+     - [Slider] param_36: float (not required, defaults to:   0.33)  
+     - [Slider] param_37: float (not required, defaults to:   0.4)  
+     - [Slider] param_38: float (not required, defaults to:   1.0)  
+     - [Slider] param_39: float (not required, defaults to:   0.0)  
+     - [Slider] param_40: float (not required, defaults to:   0)  
+     - [Slider] param_41: float (not required, defaults to:   -6)  
+     - [Slider] param_42: float (not required, defaults to:   0.05)  
+     - [Slider] param_43: float (not required, defaults to:   0)  
+     - [Slider] param_44: float (not required, defaults to:   25)  
+     - [Slider] param_45: float (not required, defaults to:   1.0)  
+     - [Slider] param_46: float (not required, defaults to:   0.25)  
+     - [Slider] param_47: float (not required, defaults to:   7)  
+     - [Slider] param_48: float (not required, defaults to:   0.0)  
+     - [Slider] param_49: float (not required, defaults to:   0.5)  
+     - [Slider] param_50: float (not required, defaults to:   8)  
+     - [Slider] param_51: float (not required, defaults to:   -6)  
+     - [Slider] param_52: float (not required, defaults to:   0)  
+     - [Slider] param_53: float (not required, defaults to:   1)  
+     - [Slider] param_54: float (not required, defaults to:   1.0)  
+     - [Slider] param_55: float (not required, defaults to:   100)  
+     - [Slider] param_56: float (not required, defaults to:   0.5)  
+     - [Slider] param_57: float (not required, defaults to:   0.0)  
+     - [Slider] param_58: float (not required, defaults to:   0.5)  
+     - [Dropdown] param_59: Literal['0'] (not required, defaults to:   0)  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(api_name="/enable_stop_convert_button") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(api_name="/disable_stop_convert_button") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(model_name, dataset_path, sample_rate, cpu_cores, cut_preprocess, process_effects, noise_reduction, clean_strength, chunk_len, overlap_len, normalization_mode, api_name="/run_preprocess_script") -> output_information
+    Parameters:
+     - [Dropdown] model_name: Literal[] (not required, defaults to:   my-project)  
+     - [Dropdown] dataset_path: Literal[] (required)  
+     - [Radio] sample_rate: Literal['32000', '40000', '48000'] (not required, defaults to:   40000)  
+     - [Slider] cpu_cores: float (not required, defaults to:   32)  
+     - [Radio] cut_preprocess: Literal['Skip', 'Simple', 'Automatic'] (not required, defaults to:   Automatic)  
+     - [Checkbox] process_effects: bool (not required, defaults to:   False)  
+     - [Checkbox] noise_reduction: bool (not required, defaults to:   False)  
+     - [Slider] clean_strength: float (not required, defaults to:   0.5)  
+     - [Slider] chunk_len: float (not required, defaults to:   3.0)  
+     - [Slider] overlap_len: float (not required, defaults to:   0.3)  
+     - [Radio] normalization_mode: Literal['none', 'pre', 'post'] (not required, defaults to:   post)  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(model_name, f0_method, cpu_cores, gpu, sample_rate, embedder_model, embedder_model_custom, include_mutes, api_name="/run_extract_script") -> output_information
+    Parameters:
+     - [Dropdown] model_name: Literal[] (not required, defaults to:   my-project)  
+     - [Radio] f0_method: Literal['crepe', 'crepe-tiny', 'rmvpe'] (not required, defaults to:   rmvpe)  
+     - [Slider] cpu_cores: float (not required, defaults to:   32)  
+     - [Textbox] gpu: str (not required, defaults to:   0)  
+     - [Radio] sample_rate: Literal['32000', '40000', '48000'] (not required, defaults to:   40000)  
+     - [Radio] embedder_model: Literal['contentvec', 'spin-v2', 'custom'] (not required, defaults to:   contentvec)  
+     - [Dropdown] embedder_model_custom: Literal[] | None (not required, defaults to:   None)  
+     - [Slider] include_mutes: float (not required, defaults to:   2)  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(terms_accepted, param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, param_9, param_10, param_11, param_12, param_13, param_14, param_15, param_16, param_17, param_18, param_19, api_name="/enforce_terms_1") -> output_information
+    Parameters:
+     - [Checkbox] terms_accepted: bool (not required, defaults to:   False)  
+     - [Dropdown] param_1: Literal[] (not required, defaults to:   my-project)  
+     - [Slider] param_2: float (not required, defaults to:   10)  
+     - [Checkbox] param_3: bool (not required, defaults to:   True)  
+     - [Checkbox] param_4: bool (not required, defaults to:   True)  
+     - [Slider] param_5: float (not required, defaults to:   200)  
+     - [Radio] param_6: Literal['32000', '40000', '48000'] (not required, defaults to:   40000)  
+     - [Slider] param_7: float (not required, defaults to:   4)  
+     - [Textbox] param_8: str (not required, defaults to:   0)  
+     - [Checkbox] param_9: bool (not required, defaults to:   False)  
+     - [Slider] param_10: float (not required, defaults to:   50)  
+     - [Checkbox] param_11: bool (not required, defaults to:   True)  
+     - [Checkbox] param_12: bool (not required, defaults to:   False)  
+     - [Radio] param_13: Literal['Auto', 'Faiss', 'KMeans'] (not required, defaults to:   Auto)  
+     - [Checkbox] param_14: bool (not required, defaults to:   False)  
+     - [Checkbox] param_15: bool (not required, defaults to:   False)  
+     - [Dropdown] param_16: Literal[] (required)  
+     - [Dropdown] param_17: Literal[] (required)  
+     - [Radio] param_18: Literal['HiFi-GAN', 'RefineGAN'] (not required, defaults to:   HiFi-GAN)  
+     - [Checkbox] param_19: bool (not required, defaults to:   False)  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(model_name, api_name="/stop_train") -> 
+    Parameters:
+     - [Dropdown] model_name: Literal[] (not required, defaults to:   my-project)  
+    Returns:
+     - None
+
+ - predict(model_name, index_algorithm, api_name="/run_index_script") -> output_information
+    Parameters:
+     - [Dropdown] model_name: Literal[] (not required, defaults to:   my-project)  
+     - [Radio] index_algorithm: Literal['Auto', 'Faiss', 'KMeans'] (not required, defaults to:   Auto)  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(noise_reduction, api_name="/update_slider_visibility") -> noise_reduction_strength
+    Parameters:
+     - [Checkbox] noise_reduction: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] noise_reduction_strength: float (numeric value between 0 and 1) 
+
+ - predict(architecture, api_name="/toggle_architecture") -> (sampling_rate, vocoder)
+    Parameters:
+     - [Radio] architecture: Literal['RVC', 'Applio'] (not required, defaults to:   RVC)  
+    Returns:
+     - [Radio] sampling_rate: Literal['32000', '40000', '48000'] 
+     - [Radio] vocoder: Literal['HiFi-GAN', 'RefineGAN'] 
+
+ - predict(vocoder, api_name="/toggle_vocoder") -> sampling_rate
+    Parameters:
+     - [Radio] vocoder: Literal['HiFi-GAN', 'RefineGAN'] (not required, defaults to:   HiFi-GAN)  
+    Returns:
+     - [Radio] sampling_rate: Literal['32000', '40000', '48000'] 
+
+ - predict(api_name="/refresh_models_and_datasets") -> (model_name, dataset_path)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] model_name: Literal[] 
+     - [Dropdown] dataset_path: Literal[] 
+
+ - predict(checkbox, api_name="/toggle_visible_14") -> 
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(dropbox, dataset_name, api_name="/save_drop_dataset_audio") -> (upload_audio_dataset, dataset_path)
+    Parameters:
+     - [File] dropbox: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+     - [Textbox] dataset_name: str (required)  
+    Returns:
+     - [File] upload_audio_dataset: filepath 
+     - [Dropdown] dataset_path: Literal[] 
+
+ - predict(embedder_model, api_name="/toggle_visible_embedder_custom_2") -> 
+    Parameters:
+     - [Radio] embedder_model: Literal['contentvec', 'spin-v2', 'custom'] (not required, defaults to:   contentvec)  
+    Returns:
+     - None
+
+ - predict(embedder_model, api_name="/toggle_visible_embedder_custom_3") -> 
+    Parameters:
+     - [Radio] embedder_model: Literal['contentvec', 'spin-v2', 'custom'] (not required, defaults to:   contentvec)  
+    Returns:
+     - None
+
+ - predict(folder_name, bin_file, config_file, api_name="/create_folder_and_move_files_2") -> 
+    Parameters:
+     - [Textbox] folder_name: str (required)  
+     - [File] bin_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+     - [File] config_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - None
+
+ - predict(api_name="/refresh_embedders_folders") -> select_custom_embedder
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] select_custom_embedder: Literal[] 
+
+ - predict(pretrained, custom_pretrained, api_name="/toggle_pretrained") -> custom_pretrained
+    Parameters:
+     - [Checkbox] pretrained: bool (not required, defaults to:   True)  
+     - [Checkbox] custom_pretrained: bool (not required, defaults to:   False)  
+    Returns:
+     - [Checkbox] custom_pretrained: bool 
+
+ - predict(checkbox, api_name="/toggle_visible_15") -> 
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(api_name="/refresh_custom_pretraineds") -> (custom_pretrained_g, custom_pretrained_d)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] custom_pretrained_g: Literal[] 
+     - [Dropdown] custom_pretrained_d: Literal[] 
+
+ - predict(dropbox, api_name="/save_drop_model") -> upload_pretrained_model
+    Parameters:
+     - [File] dropbox: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [File] upload_pretrained_model: filepath 
+
+ - predict(checkbox, api_name="/toggle_visible_16") -> 
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(api_name="/enable_stop_train_button") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(api_name="/disable_stop_train_button") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(pth_path, api_name="/export_pth") -> exported_pth_file
+    Parameters:
+     - [Dropdown] pth_path: Literal[] (required)  
+    Returns:
+     - [File] exported_pth_file: filepath 
+
+ - predict(index_path, api_name="/export_index") -> exported_index_file
+    Parameters:
+     - [Dropdown] index_path: Literal[] (required)  
+    Returns:
+     - [File] exported_index_file: filepath 
+
+ - predict(api_name="/refresh_pth_and_index_list") -> (pth_file, index_file)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] pth_file: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(filter_text, api_name="/filter_dropdowns_2") -> (voice_model, index_file)
+    Parameters:
+     - [Textbox] filter_text: str (required)  
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(_, api_name="/update_filter_visibility_1") -> (filter, voice_model, index_file)
+    Parameters:
+     - [Textbox] _: str (required)  
+    Returns:
+     - [Textbox] filter: str 
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(api_name="/lambda_4") -> (voice_model, index_file)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(model_file_value, api_name="/lambda_5") -> index_file
+    Parameters:
+     - [Dropdown] model_file_value: Literal[] (required)  
+    Returns:
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(checkbox, api_name="/toggle_visible_17") -> autotune_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] autotune_strength: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_18") -> proposed_pitch_threshold
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] proposed_pitch_threshold: float (numeric value between 50.0 and 1200.0) 
+
+ - predict(checkbox, api_name="/toggle_visible_19") -> clean_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] clean_strength: float (numeric value between 0 and 1) 
+
+ - predict(model, api_name="/change_choices_1") -> (voice_model, index_file, speaker_id, speaker_id)
+    Parameters:
+     - [Dropdown] model: Literal[] (required)  
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+     - [Dropdown] speaker_id: Literal['0'] 
+     - [Dropdown] speaker_id: Literal['0'] 
+
+ - predict(filter_text, api_name="/filter_dropdowns_3") -> (voice_model, index_file)
+    Parameters:
+     - [Textbox] filter_text: str (required)  
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(file_path, api_name="/process_input") -> (input_path_for_text_file, upload_a_txt_file)
+    Parameters:
+     - [File] file_path: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Textbox] input_path_for_text_file: str 
+     - [File] upload_a_txt_file: filepath 
+
+ - predict(embedder_model, api_name="/toggle_visible_embedder_custom_4") -> 
+    Parameters:
+     - [Radio] embedder_model: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+    Returns:
+     - None
+
+ - predict(folder_name, bin_file, config_file, api_name="/create_folder_and_move_files_3") -> 
+    Parameters:
+     - [Textbox] folder_name: str (required)  
+     - [File] bin_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+     - [File] config_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - None
+
+ - predict(api_name="/lambda_6") -> select_custom_embedder
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] select_custom_embedder: Literal[] 
+
+ - predict(terms_accepted, param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, param_9, param_10, param_11, param_12, param_13, param_14, param_15, param_16, param_17, param_18, param_19, param_20, param_21, param_22, param_23, param_24, api_name="/enforce_terms_2") -> (output_information, export_audio)
+    Parameters:
+     - [Checkbox] terms_accepted: bool (not required, defaults to:   False)  
+     - [Textbox] param_1: str (not required, defaults to:   )  
+     - [Textbox] param_2: str (required)  
+     - [Dropdown] param_3: Literal['af-ZA-AdriNeural', 'af-ZA-WillemNeural', 'sq-AL-AnilaNeural', 'sq-AL-IlirNeural', 'am-ET-AmehaNeural', 'am-ET-MekdesNeural', 'ar-DZ-AminaNeural', 'ar-DZ-IsmaelNeural', 'ar-BH-AliNeural', 'ar-BH-LailaNeural', 'ar-EG-SalmaNeural', 'ar-EG-ShakirNeural', 'ar-IQ-BasselNeural', 'ar-IQ-RanaNeural', 'ar-JO-SanaNeural', 'ar-JO-TaimNeural', 'ar-KW-FahedNeural', 'ar-KW-NouraNeural', 'ar-LB-LaylaNeural', 'ar-LB-RamiNeural', 'ar-LY-ImanNeural', 'ar-LY-OmarNeural', 'ar-MA-JamalNeural', 'ar-MA-MounaNeural', 'ar-OM-AbdullahNeural', 'ar-OM-AyshaNeural', 'ar-QA-AmalNeural', 'ar-QA-MoazNeural', 'ar-SA-HamedNeural', 'ar-SA-ZariyahNeural', 'ar-SY-AmanyNeural', 'ar-SY-LaithNeural', 'ar-TN-HediNeural', 'ar-TN-ReemNeural', 'ar-AE-FatimaNeural', 'ar-AE-HamdanNeural', 'ar-YE-MaryamNeural', 'ar-YE-SalehNeural', 'az-AZ-BabekNeural', 'az-AZ-BanuNeural', 'bn-BD-NabanitaNeural', 'bn-BD-PradeepNeural', 'bn-IN-BashkarNeural', 'bn-IN-TanishaaNeural', 'bs-BA-VesnaNeural', 'bs-BA-GoranNeural', 'bg-BG-BorislavNeural', 'bg-BG-KalinaNeural', 'my-MM-NilarNeural', 'my-MM-ThihaNeural', 'ca-ES-EnricNeural', 'ca-ES-JoanaNeural', 'zh-HK-HiuGaaiNeural', 'zh-HK-HiuMaanNeural', 'zh-HK-WanLungNeural', 'zh-CN-XiaoxiaoNeural', 'zh-CN-XiaoyiNeural', 'zh-CN-YunjianNeural', 'zh-CN-YunxiNeural', 'zh-CN-YunxiaNeural', 'zh-CN-YunyangNeural', 'zh-CN-liaoning-XiaobeiNeural', 'zh-TW-HsiaoChenNeural', 'zh-TW-YunJheNeural', 'zh-TW-HsiaoYuNeural', 'zh-CN-shaanxi-XiaoniNeural', 'hr-HR-GabrijelaNeural', 'hr-HR-SreckoNeural', 'cs-CZ-AntoninNeural', 'cs-CZ-VlastaNeural', 'da-DK-ChristelNeural', 'da-DK-JeppeNeural', 'nl-BE-ArnaudNeural', 'nl-BE-DenaNeural', 'nl-NL-ColetteNeural', 'nl-NL-FennaNeural', 'nl-NL-MaartenNeural', 'en-AU-NatashaNeural', 'en-AU-WilliamNeural', 'en-CA-ClaraNeural', 'en-CA-LiamNeural', 'en-HK-YanNeural', 'en-HK-SamNeural', 'en-IN-NeerjaExpressiveNeural', 'en-IN-NeerjaNeural', 'en-IN-PrabhatNeural', 'en-IE-ConnorNeural', 'en-IE-EmilyNeural', 'en-KE-AsiliaNeural', 'en-KE-ChilembaNeural', 'en-NZ-MitchellNeural', 'en-NZ-MollyNeural', 'en-NG-AbeoNeural', 'en-NG-EzinneNeural', 'en-PH-JamesNeural', 'en-PH-RosaNeural', 'en-SG-LunaNeural', 'en-SG-WayneNeural', 'en-US-AvaMultilingualNeural', 'en-US-AndrewMultilingualNeural', 'en-US-EmmaMultilingualNeural', 'en-US-BrianMultilingualNeural', 'en-US-AvaNeural', 'en-US-AndrewNeural', 'en-US-EmmaNeural', 'en-US-BrianNeural', 'en-ZA-LeahNeural', 'en-ZA-LukeNeural', 'en-TZ-ElimuNeural', 'en-TZ-ImaniNeural', 'en-GB-LibbyNeural', 'en-GB-MaisieNeural', 'en-GB-RyanNeural', 'en-GB-SoniaNeural', 'en-GB-ThomasNeural', 'en-US-AnaNeural', 'en-US-AriaNeural', 'en-US-ChristopherNeural', 'en-US-EricNeural', 'en-US-GuyNeural', 'en-US-JennyNeural', 'en-US-MichelleNeural', 'en-US-RogerNeural', 'en-US-SteffanNeural', 'et-EE-AnuNeural', 'et-EE-KertNeural', 'fil-PH-AngeloNeural', 'fil-PH-BlessicaNeural', 'fi-FI-HarriNeural', 'fi-FI-NooraNeural', 'fr-BE-CharlineNeural', 'fr-BE-GerardNeural', 'fr-CA-ThierryNeural', 'fr-CA-AntoineNeural', 'fr-CA-JeanNeural', 'fr-CA-SylvieNeural', 'fr-FR-VivienneMultilingualNeural', 'fr-FR-RemyMultilingualNeural', 'fr-FR-DeniseNeural', 'fr-FR-EloiseNeural', 'fr-FR-HenriNeural', 'fr-CH-ArianeNeural', 'fr-CH-FabriceNeural', 'gl-ES-RoiNeural', 'gl-ES-SabelaNeural', 'ka-GE-EkaNeural', 'ka-GE-GiorgiNeural', 'de-AT-IngridNeural', 'de-AT-JonasNeural', 'de-DE-SeraphinaMultilingualNeural', 'de-DE-FlorianMultilingualNeural', 'de-DE-AmalaNeural', 'de-DE-ConradNeural', 'de-DE-KatjaNeural', 'de-DE-KillianNeural', 'de-CH-JanNeural', 'de-CH-LeniNeural', 'el-GR-AthinaNeural', 'el-GR-NestorasNeural', 'gu-IN-DhwaniNeural', 'gu-IN-NiranjanNeural', 'he-IL-AvriNeural', 'he-IL-HilaNeural', 'hi-IN-MadhurNeural', 'hi-IN-SwaraNeural', 'hu-HU-NoemiNeural', 'hu-HU-TamasNeural', 'is-IS-GudrunNeural', 'is-IS-GunnarNeural', 'id-ID-ArdiNeural', 'id-ID-GadisNeural', 'iu-Latn-CA-SiqiniqNeural', 'iu-Latn-CA-TaqqiqNeural', 'iu-Cans-CA-SiqiniqNeural', 'iu-Cans-CA-TaqqiqNeural', 'ga-IE-ColmNeural', 'ga-IE-OrlaNeural', 'it-IT-GiuseppeMultilingualNeural', 'it-IT-DiegoNeural', 'it-IT-ElsaNeural', 'it-IT-IsabellaNeural', 'ja-JP-KeitaNeural', 'ja-JP-NanamiNeural', 'jv-ID-DimasNeural', 'jv-ID-SitiNeural', 'kn-IN-GaganNeural', 'kn-IN-SapnaNeural', 'kk-KZ-AigulNeural', 'kk-KZ-DauletNeural', 'km-KH-PisethNeural', 'km-KH-SreymomNeural', 'ko-KR-HyunsuMultilingualNeural', 'ko-KR-InJoonNeural', 'ko-KR-SunHiNeural', 'lo-LA-ChanthavongNeural', 'lo-LA-KeomanyNeural', 'lv-LV-EveritaNeural', 'lv-LV-NilsNeural', 'lt-LT-LeonasNeural', 'lt-LT-OnaNeural', 'mk-MK-AleksandarNeural', 'mk-MK-MarijaNeural', 'ms-MY-OsmanNeural', 'ms-MY-YasminNeural', 'ml-IN-MidhunNeural', 'ml-IN-SobhanaNeural', 'mt-MT-GraceNeural', 'mt-MT-JosephNeural', 'mr-IN-AarohiNeural', 'mr-IN-ManoharNeural', 'mn-MN-BataaNeural', 'mn-MN-YesuiNeural', 'ne-NP-HemkalaNeural', 'ne-NP-SagarNeural', 'nb-NO-FinnNeural', 'nb-NO-PernilleNeural', 'ps-AF-GulNawazNeural', 'ps-AF-LatifaNeural', 'fa-IR-DilaraNeural', 'fa-IR-FaridNeural', 'pl-PL-MarekNeural', 'pl-PL-ZofiaNeural', 'pt-BR-ThalitaMultilingualNeural', 'pt-BR-AntonioNeural', 'pt-BR-FranciscaNeural', 'pt-PT-DuarteNeural', 'pt-PT-RaquelNeural', 'ro-RO-AlinaNeural', 'ro-RO-EmilNeural', 'ru-RU-DmitryNeural', 'ru-RU-SvetlanaNeural', 'sr-RS-NicholasNeural', 'sr-RS-SophieNeural', 'si-LK-SameeraNeural', 'si-LK-ThiliniNeural', 'sk-SK-LukasNeural', 'sk-SK-ViktoriaNeural', 'sl-SI-PetraNeural', 'sl-SI-RokNeural', 'so-SO-MuuseNeural', 'so-SO-UbaxNeural', 'es-AR-ElenaNeural', 'es-AR-TomasNeural', 'es-BO-MarceloNeural', 'es-BO-SofiaNeural', 'es-CL-CatalinaNeural', 'es-CL-LorenzoNeural', 'es-CO-GonzaloNeural', 'es-CO-SalomeNeural', 'es-ES-XimenaNeural', 'es-CR-JuanNeural', 'es-CR-MariaNeural', 'es-CU-BelkysNeural', 'es-CU-ManuelNeural', 'es-DO-EmilioNeural', 'es-DO-RamonaNeural', 'es-EC-AndreaNeural', 'es-EC-LuisNeural', 'es-SV-LorenaNeural', 'es-SV-RodrigoNeural', 'es-GQ-JavierNeural', 'es-GQ-TeresaNeural', 'es-GT-AndresNeural', 'es-GT-MartaNeural', 'es-HN-CarlosNeural', 'es-HN-KarlaNeural', 'es-MX-DaliaNeural', 'es-MX-JorgeNeural', 'es-NI-FedericoNeural', 'es-NI-YolandaNeural', 'es-PA-MargaritaNeural', 'es-PA-RobertoNeural', 'es-PY-MarioNeural', 'es-PY-TaniaNeural', 'es-PE-AlexNeural', 'es-PE-CamilaNeural', 'es-PR-KarinaNeural', 'es-PR-VictorNeural', 'es-ES-AlvaroNeural', 'es-ES-ElviraNeural', 'es-US-AlonsoNeural', 'es-US-PalomaNeural', 'es-UY-MateoNeural', 'es-UY-ValentinaNeural', 'es-VE-PaolaNeural', 'es-VE-SebastianNeural', 'su-ID-JajangNeural', 'su-ID-TutiNeural', 'sw-KE-RafikiNeural', 'sw-KE-ZuriNeural', 'sw-TZ-DaudiNeural', 'sw-TZ-RehemaNeural', 'sv-SE-MattiasNeural', 'sv-SE-SofieNeural', 'ta-IN-PallaviNeural', 'ta-IN-ValluvarNeural', 'ta-MY-KaniNeural', 'ta-MY-SuryaNeural', 'ta-SG-AnbuNeural', 'ta-SG-VenbaNeural', 'ta-LK-KumarNeural', 'ta-LK-SaranyaNeural', 'te-IN-MohanNeural', 'te-IN-ShrutiNeural', 'th-TH-NiwatNeural', 'th-TH-PremwadeeNeural', 'tr-TR-EmelNeural', 'tr-TR-AhmetNeural', 'uk-UA-OstapNeural', 'uk-UA-PolinaNeural', 'ur-IN-GulNeural', 'ur-IN-SalmanNeural', 'ur-PK-AsadNeural', 'ur-PK-UzmaNeural', 'uz-UZ-MadinaNeural', 'uz-UZ-SardorNeural', 'vi-VN-HoaiMyNeural', 'vi-VN-NamMinhNeural', 'cy-GB-AledNeural', 'cy-GB-NiaNeural', 'zu-ZA-ThandoNeural', 'zu-ZA-ThembaNeural'] (not required, defaults to:   nb-NO-PernilleNeural)  
+     - [Slider] param_4: float (not required, defaults to:   0)  
+     - [Slider] param_5: float (not required, defaults to:   0)  
+     - [Slider] param_6: float (not required, defaults to:   0.75)  
+     - [Slider] param_7: float (not required, defaults to:   1)  
+     - [Slider] param_8: float (not required, defaults to:   0.5)  
+     - [Radio] param_9: Literal['crepe', 'crepe-tiny', 'rmvpe', 'fcpe'] (not required, defaults to:   rmvpe)  
+     - [Textbox] param_10: str (not required, defaults to:   C:\AI\Tools\ApplioV3.6.2\assets\audios\tts_output.wav)  
+     - [Textbox] param_11: str (not required, defaults to:   C:\AI\Tools\ApplioV3.6.2\assets\audios\tts_rvc_output.wav)  
+     - [Dropdown] param_12: Literal[] (required)  
+     - [Dropdown] param_13: Literal[] (not required, defaults to:   )  
+     - [Checkbox] param_14: bool (not required, defaults to:   False)  
+     - [Checkbox] param_15: bool (not required, defaults to:   False)  
+     - [Slider] param_16: float (not required, defaults to:   1)  
+     - [Checkbox] param_17: bool (not required, defaults to:   False)  
+     - [Slider] param_18: float (not required, defaults to:   155.0)  
+     - [Checkbox] param_19: bool (not required, defaults to:   False)  
+     - [Slider] param_20: float (not required, defaults to:   0.5)  
+     - [Radio] param_21: Literal['WAV', 'MP3', 'FLAC', 'OGG', 'M4A'] (not required, defaults to:   WAV)  
+     - [Radio] param_22: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+     - [Dropdown] param_23: Literal[] (required)  
+     - [Dropdown] param_24: Literal['0'] (not required, defaults to:   0)  
+    Returns:
+     - [Textbox] output_information: str 
+     - [Audio] export_audio: filepath 
+
+ - predict(model_name, pth_path_1, pth_path_2, ratio, api_name="/run_model_blender_script") -> (output_information, download_model)
+    Parameters:
+     - [Textbox] model_name: str (not required, defaults to:   )  
+     - [Textbox] pth_path_1: str (not required, defaults to:   )  
+     - [Textbox] pth_path_2: str (not required, defaults to:   )  
+     - [Slider] ratio: float (not required, defaults to:   0.5)  
+    Returns:
+     - [Textbox] output_information: str 
+     - [File] download_model: filepath 
+
+ - predict(dropbox, api_name="/update_model_fusion") -> (path_to_model, drag_and_drop_your_model_here)
+    Parameters:
+     - [File] dropbox: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Textbox] path_to_model: str 
+     - [File] drag_and_drop_your_model_here: filepath 
+
+ - predict(dropbox, api_name="/update_model_fusion_1") -> (path_to_model, drag_and_drop_your_model_here)
+    Parameters:
+     - [File] dropbox: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Textbox] path_to_model: str 
+     - [File] drag_and_drop_your_model_here: filepath 
+
+ - predict(api_name="/refresh_devices") -> (input_device, output_device, monitor_device)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] input_device: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] 
+     - [Dropdown] output_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] 
+     - [Dropdown] monitor_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] 
+
+ - predict(checkbox, api_name="/toggle_visible_20") -> autotune_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] autotune_strength: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_21") -> proposed_pitch_threshold
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] proposed_pitch_threshold: float (numeric value between 50.0 and 1200.0) 
+
+ - predict(checkbox, api_name="/toggle_visible_22") -> clean_strength
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] clean_strength: float (numeric value between 0 and 1) 
+
+ - predict(embedder_model, api_name="/toggle_visible_embedder_custom_5") -> 
+    Parameters:
+     - [Radio] embedder_model: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+    Returns:
+     - None
+
+ - predict(folder_name, bin_file, config_file, api_name="/create_folder_and_move_files_4") -> 
+    Parameters:
+     - [Textbox] folder_name: str (required)  
+     - [File] bin_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+     - [File] config_file: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - None
+
+ - predict(api_name="/lambda_7") -> select_custom_embedder
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] select_custom_embedder: Literal[] 
+
+ - predict(checkbox, api_name="/post_process_visible_2") -> (reverb, pitch_shift, limiter, gain, distortion, chorus, bitcrush, clipping, compressor, delay)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Checkbox] reverb: bool 
+     - [Checkbox] pitch_shift: bool 
+     - [Checkbox] limiter: bool 
+     - [Checkbox] gain: bool 
+     - [Checkbox] distortion: bool 
+     - [Checkbox] chorus: bool 
+     - [Checkbox] bitcrush: bool 
+     - [Checkbox] clipping: bool 
+     - [Checkbox] compressor: bool 
+     - [Checkbox] delay: bool 
+
+ - predict(checkbox, api_name="/reverb_visible_2") -> (reverb_room_size, reverb_damping, reverb_wet_gain, reverb_dry_gain, reverb_width, reverb_freeze_mode)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] reverb_room_size: float (numeric value between 0 and 1) 
+     - [Slider] reverb_damping: float (numeric value between 0 and 1) 
+     - [Slider] reverb_wet_gain: float (numeric value between 0 and 1) 
+     - [Slider] reverb_dry_gain: float (numeric value between 0 and 1) 
+     - [Slider] reverb_width: float (numeric value between 0 and 1) 
+     - [Slider] reverb_freeze_mode: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_23") -> pitch_shift_semitones
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] pitch_shift_semitones: float (numeric value between -12 and 12) 
+
+ - predict(checkbox, api_name="/limiter_visible_2") -> (limiter_threshold_db, limiter_release_time)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] limiter_threshold_db: float (numeric value between -60 and 0) 
+     - [Slider] limiter_release_time: float (numeric value between 0.01 and 1) 
+
+ - predict(checkbox, api_name="/toggle_visible_24") -> gain_db
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] gain_db: float (numeric value between -60 and 60) 
+
+ - predict(checkbox, api_name="/toggle_visible_25") -> distortion_gain
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] distortion_gain: float (numeric value between -60 and 60) 
+
+ - predict(checkbox, api_name="/chorus_visible_2") -> (chorus_rate_hz, chorus_depth, chorus_center_delay_ms, chorus_feedback, chorus_mix)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] chorus_rate_hz: float (numeric value between 0 and 100) 
+     - [Slider] chorus_depth: float (numeric value between 0 and 1) 
+     - [Slider] chorus_center_delay_ms: float (numeric value between 7 and 8) 
+     - [Slider] chorus_feedback: float (numeric value between 0 and 1) 
+     - [Slider] chorus_mix: float (numeric value between 0 and 1) 
+
+ - predict(checkbox, api_name="/bitcrush_visible_2") -> bitcrush_bit_depth
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] bitcrush_bit_depth: float (numeric value between 1 and 32) 
+
+ - predict(checkbox, api_name="/toggle_visible_26") -> clipping_threshold
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] clipping_threshold: float (numeric value between -60 and 0) 
+
+ - predict(checkbox, api_name="/compress_visible_2") -> (compressor_threshold_db, compressor_ratio, compressor_attack_ms, compressor_release_ms)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] compressor_threshold_db: float (numeric value between -60 and 0) 
+     - [Slider] compressor_ratio: float (numeric value between 1 and 20) 
+     - [Slider] compressor_attack_ms: float (numeric value between 0.0 and 100) 
+     - [Slider] compressor_release_ms: float (numeric value between 0.01 and 100) 
+
+ - predict(checkbox, api_name="/delay_visible_2") -> (delay_seconds, delay_feedback, delay_mix)
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   False)  
+    Returns:
+     - [Slider] delay_seconds: float (numeric value between 0.0 and 5.0) 
+     - [Slider] delay_feedback: float (numeric value between 0.0 and 1.0) 
+     - [Slider] delay_mix: float (numeric value between 0.0 and 1.0) 
+
+ - predict(terms_accepted, param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, param_9, param_10, param_11, param_12, param_13, param_14, param_15, param_16, param_17, param_18, param_19, param_20, param_21, param_22, param_23, param_24, param_25, param_26, param_27, param_28, param_29, param_30, param_31, param_32, param_33, param_34, param_35, param_36, param_37, param_38, param_39, param_40, param_41, param_42, param_43, param_44, param_45, param_46, param_47, param_48, param_49, param_50, param_51, param_52, param_53, param_54, param_55, param_56, param_57, param_58, param_59, param_60, param_61, param_62, param_63, param_64, param_65, param_66, param_67, param_68, api_name="/enforce_terms_3") -> status
+    Parameters:
+     - [Checkbox] terms_accepted: bool (not required, defaults to:   False)  
+     - [Dropdown] param_1: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Input (MME))  
+     - [Slider] param_2: float (not required, defaults to:   100)  
+     - [Slider] param_3: float (not required, defaults to:   -1)  
+     - [Dropdown] param_4: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Slider] param_5: float (not required, defaults to:   100)  
+     - [Slider] param_6: float (not required, defaults to:   -1)  
+     - [Dropdown] param_7: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Slider] param_8: float (not required, defaults to:   100)  
+     - [Slider] param_9: float (not required, defaults to:   -1)  
+     - [Checkbox] param_10: bool (not required, defaults to:   False)  
+     - [Checkbox] param_11: bool (not required, defaults to:   False)  
+     - [Checkbox] param_12: bool (not required, defaults to:   True)  
+     - [Slider] param_13: float (not required, defaults to:   768)  
+     - [Slider] param_14: float (not required, defaults to:   0.05)  
+     - [Slider] param_15: float (not required, defaults to:   0.5)  
+     - [Slider] param_16: float (not required, defaults to:   -90)  
+     - [Slider] param_17: float (not required, defaults to:   0)  
+     - [Slider] param_18: float (not required, defaults to:   0)  
+     - [Slider] param_19: float (not required, defaults to:   1)  
+     - [Slider] param_20: float (not required, defaults to:   0.5)  
+     - [Radio] param_21: Literal['rmvpe', 'fcpe'] (not required, defaults to:   fcpe)  
+     - [Dropdown] param_22: Literal[] (required)  
+     - [Dropdown] param_23: Literal[] (required)  
+     - [Dropdown] param_24: Literal['0'] (not required, defaults to:   0)  
+     - [Checkbox] param_25: bool (not required, defaults to:   False)  
+     - [Slider] param_26: float (not required, defaults to:   1)  
+     - [Checkbox] param_27: bool (not required, defaults to:   False)  
+     - [Slider] param_28: float (not required, defaults to:   155.0)  
+     - [Radio] param_29: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+     - [Dropdown] param_30: Literal[] (required)  
+     - [Checkbox] param_31: bool (not required, defaults to:   False)  
+     - [Slider] param_32: float (not required, defaults to:   0.5)  
+     - [Checkbox] param_33: bool (not required, defaults to:   False)  
+     - [Checkbox] param_34: bool (not required, defaults to:   False)  
+     - [Checkbox] param_35: bool (not required, defaults to:   False)  
+     - [Checkbox] param_36: bool (not required, defaults to:   False)  
+     - [Checkbox] param_37: bool (not required, defaults to:   False)  
+     - [Checkbox] param_38: bool (not required, defaults to:   False)  
+     - [Checkbox] param_39: bool (not required, defaults to:   False)  
+     - [Checkbox] param_40: bool (not required, defaults to:   False)  
+     - [Checkbox] param_41: bool (not required, defaults to:   False)  
+     - [Checkbox] param_42: bool (not required, defaults to:   False)  
+     - [Checkbox] param_43: bool (not required, defaults to:   False)  
+     - [Slider] param_44: float (not required, defaults to:   0.5)  
+     - [Slider] param_45: float (not required, defaults to:   0.5)  
+     - [Slider] param_46: float (not required, defaults to:   0.33)  
+     - [Slider] param_47: float (not required, defaults to:   0.4)  
+     - [Slider] param_48: float (not required, defaults to:   1.0)  
+     - [Slider] param_49: float (not required, defaults to:   0.0)  
+     - [Slider] param_50: float (not required, defaults to:   0)  
+     - [Slider] param_51: float (not required, defaults to:   -6)  
+     - [Slider] param_52: float (not required, defaults to:   0.05)  
+     - [Slider] param_53: float (not required, defaults to:   0)  
+     - [Slider] param_54: float (not required, defaults to:   25)  
+     - [Slider] param_55: float (not required, defaults to:   1.0)  
+     - [Slider] param_56: float (not required, defaults to:   0.25)  
+     - [Slider] param_57: float (not required, defaults to:   7)  
+     - [Slider] param_58: float (not required, defaults to:   0.0)  
+     - [Slider] param_59: float (not required, defaults to:   0.5)  
+     - [Slider] param_60: float (not required, defaults to:   8)  
+     - [Slider] param_61: float (not required, defaults to:   -6)  
+     - [Slider] param_62: float (not required, defaults to:   0)  
+     - [Slider] param_63: float (not required, defaults to:   1)  
+     - [Slider] param_64: float (not required, defaults to:   1.0)  
+     - [Slider] param_65: float (not required, defaults to:   100)  
+     - [Slider] param_66: float (not required, defaults to:   0.5)  
+     - [Slider] param_67: float (not required, defaults to:   0.0)  
+     - [Slider] param_68: float (not required, defaults to:   0.5)  
+    Returns:
+     - [Label] status: dict(label: str | int | float | None, confidences: list[dict(label: str | int | float | None, confidence: float | None)] | None) 
+
+ - predict(api_name="/stop_realtime") -> status
+    Parameters:
+     - None
+    Returns:
+     - [Label] status: dict(label: str | int | float | None, confidences: list[dict(label: str | int | float | None, confidence: float | None)] | None) 
+
+ - predict(record_audio_path, export_format, api_name="/soundfile_record_audio") -> export_audio
+    Parameters:
+     - [Textbox] record_audio_path: str (not required, defaults to:   C:\AI\Tools\ApplioV3.6.2\assets\audios\output.wav)  
+     - [Radio] export_format: Literal['WAV', 'MP3', 'FLAC', 'OGG', 'M4A'] (not required, defaults to:   WAV)  
+    Returns:
+     - [Audio] export_audio: filepath 
+
+ - predict(api_name="/lambda_8") -> (voice_model, index_file)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+
+ - predict(model_path, api_name="/update_on_model_change") -> (index_file, speaker_id)
+    Parameters:
+     - [Dropdown] model_path: Literal[] (required)  
+    Returns:
+     - [Dropdown] index_file: Literal[] 
+     - [Dropdown] speaker_id: Literal['0'] 
+
+ - predict(input_device, output_device, monitor_device, model_file, index_file, api_name="/save_realtime_settings") -> 
+    Parameters:
+     - [Dropdown] input_device: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Input (MME))  
+     - [Dropdown] output_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] monitor_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] model_file: Literal[] (required)  
+     - [Dropdown] index_file: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(input_device, output_device, monitor_device, model_file, index_file, api_name="/save_realtime_settings_1") -> 
+    Parameters:
+     - [Dropdown] input_device: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Input (MME))  
+     - [Dropdown] output_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] monitor_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] model_file: Literal[] (required)  
+     - [Dropdown] index_file: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(input_device, output_device, monitor_device, model_file, index_file, api_name="/save_realtime_settings_2") -> 
+    Parameters:
+     - [Dropdown] input_device: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Input (MME))  
+     - [Dropdown] output_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] monitor_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] model_file: Literal[] (required)  
+     - [Dropdown] index_file: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(input_device, output_device, monitor_device, model_file, index_file, api_name="/save_realtime_settings_3") -> 
+    Parameters:
+     - [Dropdown] input_device: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Input (MME))  
+     - [Dropdown] output_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] monitor_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] model_file: Literal[] (required)  
+     - [Dropdown] index_file: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(input_device, output_device, monitor_device, model_file, index_file, api_name="/save_realtime_settings_4") -> 
+    Parameters:
+     - [Dropdown] input_device: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Input (MME))  
+     - [Dropdown] output_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] monitor_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] (not required, defaults to:   1: Microsoft Sound Mapper - Output (MME))  
+     - [Dropdown] model_file: Literal[] (required)  
+     - [Dropdown] index_file: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(api_name="/refresh_all") -> (voice_model, index_file, input_device, output_device, monitor_device)
+    Parameters:
+     - None
+    Returns:
+     - [Dropdown] voice_model: Literal[] 
+     - [Dropdown] index_file: Literal[] 
+     - [Dropdown] input_device: Literal['1: Microsoft Sound Mapper - Input (MME)', '2: Microphone (Razer Barracuda X 2 (MME)', '3: Headset (Razer Barracuda X (BT) (MME)', '4: Primary Sound Capture Driver (Windows DirectSound)', '5: Microphone (Razer Barracuda X 2.4) (Windows DirectSound)', '6: Headset (Razer Barracuda X (BT)) (Windows DirectSound)', '7: Headset (Razer Barracuda X (BT)) (Windows WASAPI)', '8: Microphone (Razer Barracuda X 2.4) (Windows WASAPI)'] 
+     - [Dropdown] output_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] 
+     - [Dropdown] monitor_device: Literal['1: Microsoft Sound Mapper - Output (MME)', '2: Speakers (Razer Barracuda X 2.4 (MME)', '3: Headphones (Razer Barracuda X ( (MME)', '4: Realtek Digital Output (Realtek (MME)', '5: LG ULTRAGEAR+ (NVIDIA High Defi (MME)', '6: Primary Sound Driver (Windows DirectSound)', '7: Speakers (Razer Barracuda X 2.4) (Windows DirectSound)', '8: Headphones (Razer Barracuda X (BT)) (Windows DirectSound)', '9: Realtek Digital Output (Realtek USB Audio) (Windows DirectSound)', '10: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows DirectSound)', '11: Speakers (Razer Barracuda X 2.4) (Windows WASAPI)', '12: Headphones (Razer Barracuda X (BT)) (Windows WASAPI)', '13: Realtek Digital Output (Realtek USB Audio) (Windows WASAPI)', '14: LG ULTRAGEAR+ (NVIDIA High Definition Audio) (Windows WASAPI)'] 
+
+ - predict(value, api_name="/lambda_9") -> 
+    Parameters:
+     - [Dropdown] value: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_10") -> 
+    Parameters:
+     - [Dropdown] value: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_11") -> 
+    Parameters:
+     - [Radio] value: Literal['rmvpe', 'fcpe'] (not required, defaults to:   fcpe)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_12") -> 
+    Parameters:
+     - [Radio] value: Literal['contentvec', 'spin', 'spin-v2', 'chinese-hubert-base', 'japanese-hubert-base', 'korean-hubert-base', 'custom'] (not required, defaults to:   contentvec)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_13") -> 
+    Parameters:
+     - [Dropdown] value: Literal[] (required)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_14") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   100)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_15") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   100)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_16") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   100)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_17") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   True)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_18") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.05)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_19") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_20") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   -90)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_21") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_22") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_23") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   1)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_24") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_25") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_26") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   1)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_27") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_28") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   155.0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_29") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_30") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_31") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_32") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_33") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_34") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_35") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_36") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_37") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_38") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_39") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_40") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_41") -> 
+    Parameters:
+     - [Checkbox] value: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_42") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_43") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_44") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.33)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_45") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.4)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_46") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   1.0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_47") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_48") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_49") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   -6)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_50") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.05)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_51") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_52") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   25)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_53") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   1.0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_54") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.25)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_55") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   7)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_56") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_57") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_58") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   8)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_59") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   -6)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_60") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_61") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   1)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_62") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   1.0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_63") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   100)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_64") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_65") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.0)  
+    Returns:
+     - None
+
+ - predict(value, api_name="/lambda_66") -> 
+    Parameters:
+     - [Slider] value: float (not required, defaults to:   0.5)  
+    Returns:
+     - None
+
+ - predict(dropbox, api_name="/save_plugin_dropbox") -> drag_your_pluginzip_to_install_it
+    Parameters:
+     - [File] dropbox: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [File] drag_your_pluginzip_to_install_it: filepath 
+
+ - predict(model_link, api_name="/run_download_script") -> output_information
+    Parameters:
+     - [Textbox] model_link: str (required)  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(dropbox, api_name="/save_drop_model_1") -> drag_your_pth_file_and_index_file_into_this_space_drag_one_and_then_the_other
+    Parameters:
+     - [File] dropbox: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [File] drag_your_pth_file_and_index_file_into_this_space_drag_one_and_then_the_other: filepath 
+
+ - predict(model, api_name="/update_sample_rate_dropdown") -> sampling_rate
+    Parameters:
+     - [Dropdown] model: Literal['Beatz Forge', 'DMR V1', 'Italia', 'IMA V1', 'KLM4', 'Nanashi v1.7', 'Ov2Super', 'RIN_E3', 'Rigel Base', 'Rigel FineTuned', 'Snowie', 'Snowie-X-RinE3', 'SingerPreTrain', 'Titan', 'UKA'] (not required, defaults to:   Titan)  
+    Returns:
+     - [Dropdown] sampling_rate: Literal['32k', '40k', '48k'] 
+
+ - predict(x, api_name="/lambda_67") -> 
+    Parameters:
+     - [Checkbox] x: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(is_custom, model, sample_rate, url_g, url_d, api_name="/download_handler") -> 
+    Parameters:
+     - [Checkbox] is_custom: bool (not required, defaults to:   False)  
+     - [Dropdown] model: Literal['Beatz Forge', 'DMR V1', 'Italia', 'IMA V1', 'KLM4', 'Nanashi v1.7', 'Ov2Super', 'RIN_E3', 'Rigel Base', 'Rigel FineTuned', 'Snowie', 'Snowie-X-RinE3', 'SingerPreTrain', 'Titan', 'UKA'] (not required, defaults to:   Titan)  
+     - [Dropdown] sample_rate: Literal['32k', '40k', '48k'] (not required, defaults to:   40k)  
+     - [Textbox] url_g: str (required)  
+     - [Textbox] url_d: str (required)  
+    Returns:
+     - None
+
+ - predict(api_name="/toggle_button_label") -> value_583
+    Parameters:
+     - None
+    Returns:
+     - [Video] value_583: filepath 
+
+ - predict(pth_path, api_name="/run_model_information_script") -> output_information
+    Parameters:
+     - [Textbox] pth_path: str (not required, defaults to:   )  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(audio_path, method, api_name="/extract_f0_curve") -> (value_596, f0_curve)
+    Parameters:
+     - [Audio] audio_path: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+     - [Radio] method: Literal['crepe', 'fcpe', 'rmvpe'] (not required, defaults to:   rmvpe)  
+    Returns:
+     - [Image] value_596: dict(path: str | None (Path to a local file), url: str | None (Publicly available url or base64 encoded image), size: int | None (Size of image in bytes), orig_name: str | None (Original filename), mime_type: str | None (mime type of image), is_stream: bool (Can always be set to False), meta: dict(str, Any)) 
+     - [File] f0_curve: filepath 
+
+ - predict(input_path, api_name="/run_audio_analyzer_script") -> (output_information, value_603)
+    Parameters:
+     - [Audio] input_path: filepath (required)  (The FileData class is a subclass of the GradioModel class that represents a file object within a Gradio interface. It is used to store file data and metadata when a file is uploaded.
+
+Attributes:
+    path: The server file path where the file is stored.
+    url: The normalized server URL pointing to the file.
+    size: The size of the file in bytes.
+    orig_name: The original filename before upload.
+    mime_type: The MIME type of the file.
+    is_stream: Indicates whether the file is a stream.
+    meta: Additional metadata used internally (should not be changed).) 
+    Returns:
+     - [Textbox] output_information: str 
+     - [Image] value_603: dict(path: str | None (Path to a local file), url: str | None (Publicly available url or base64 encoded image), size: int | None (Size of image in bytes), orig_name: str | None (Original filename), mime_type: str | None (mime type of image), is_stream: bool (Can always be set to False), meta: dict(str, Any)) 
+
+ - predict(val, api_name="/save_config_filter") -> 
+    Parameters:
+     - [Checkbox] val: bool (not required, defaults to:   False)  
+    Returns:
+     - None
+
+ - predict(checked, api_name="/lambda_68") -> value_5
+    Parameters:
+     - [Checkbox] checked: bool (not required, defaults to:   False)  
+    Returns:
+     - [Textbox] value_5: str 
+
+ - predict(checkbox, api_name="/toggle") -> 
+    Parameters:
+     - [Checkbox] checkbox: bool (not required, defaults to:   True)  
+    Returns:
+     - None
+
+ - predict(name, api_name="/select_theme") -> 
+    Parameters:
+     - [Dropdown] name: Literal['wentaohe/whiteboardv2', 'step-3-profit/Midnight-Deep', 'YenLai/Superhuman', 'Ama434/def_barlow', 'simulKitke/dracula_test', 'Tshackelton/IBMPlex-DenseReadable', 'coding-alt/soft', 'zkunn/Alipay_Gradio_theme', 'gstaff/xkcd', 'rottenlittlecreature/Moon_Goblin', 'gradio/base', 'braintacles/CrimsonNight', 'abidlabs/dracula_test', 'ysharma/huggingface', 'gstaff/sketch', 'gradio/seafoam', 'shivi/calm_seafoam', 'aliabid94/test4', 'kfahn/AnimalPose', 'finlaymacklon/boxy_violet', 'freddyaboulton/dracula_revamped', 'abidlabs/pakistan', 'aliabid94/test3', 'ParityError/Anime', 'gradio/default', 'finlaymacklon/smooth_slate', 'abidlabs/test-yellow3', 'gradio/monochrome', 'aliabid94/new-theme', 'abidlabs/test-yellow', 'gradio/soft', 'abidlabs/dracula_revamped', 'freddyaboulton/test-blue', 'Applio', 'ParityError/LimeFace', 'dawood/dracula_test', 'HaleyCH/HaleyCH_Theme', 'xiaobaiyuan/theme_land', 'Ifeanyi/Cyanister', 'aliabid94/test2', 'idspicQstitho/dracula_revamped', 'knotdgaf/gradiotest', 'abidlabs/banana', 'freddyaboulton/bad-theme-space', 'rawrsor1/Everforest', 'nota-ai/theme', 'dawood/microsoft_windows', 'gradio/dracula_revamped', 'EveryPizza/Cartoony-Gradio-Theme', 'remilia/Ghostly', 'Franklisi/darkmode', 'Insuz/SimpleIndigo', 'gradio/glass', 'reilnuud/polite', 'Ajaxon6255/Emerald_Isle', 'gradio/dracula_test', 'Insuz/Mocha', 'gstaff/whiteboard', 'freddyaboulton/this-theme-does-not-exist-2', 'ysharma/steampunk', 'SebastianBravo/simci_css', 'BlueDancer/Alien_Diffusion', 'abidlabs/Lime', 'Ama434/neutral-barlow', 'Himhimhim/xkcd', 'Taithrah/Minimal', 'loadThemes', 'ysharma/llamas', 'xiaobaiyuan/theme_brief', 'bethecloud/storj_theme', 'Dagfinn1962/standard', 'nuttea/Softblue', 'naughtondale/monochrome', 'JohnSmith9982/small_and_pretty', 'abidlabs/font-test', 'snehilsanyal/scikit-learn', 'xiaobaiyuan/theme_demo', 'derekzen/stardust', 'ParityError/Interstellar', 'Ama434/434-base-Barlow', 'sudeepshouche/minimalist'] (not required, defaults to:   {'name': 'Applio', '_font_css': [], 'primary_50': '#fafafa', 'primary_100': '#f5f5f5', 'primary_200': '#e5e5e5', 'primary_300': '#d4d4d4', 'primary_400': '#a3a3a3', 'primary_500': '#737373', 'primary_600': '#525252', 'primary_700': '#404040', 'primary_800': '#262626', 'primary_900': '#171717', 'primary_950': '#0f0f0f', 'secondary_50': '#eff6ff', 'secondary_100': '#dbeafe', 'secondary_200': '#bfdbfe', 'secondary_300': '#93c5fd', 'secondary_400': '#60a5fa', 'secondary_500': '#3b82f6', 'secondary_600': '#2563eb', 'secondary_700': '#1d4ed8', 'secondary_800': '#1e40af', 'secondary_900': '#1e3a8a', 'secondary_950': '#1d3660', 'neutral_50': '#fafafa', 'neutral_100': '#f5f5f5', 'neutral_200': '#e5e5e5', 'neutral_300': '#d4d4d4', 'neutral_400': '#a3a3a3', 'neutral_500': '#737373', 'neutral_600': '#525252', 'neutral_700': '#404040', 'neutral_800': '#262626', 'neutral_900': '#171717', 'neutral_950': '#0f0f0f', 'spacing_xxs': '1px', 'spacing_xs': '2px', 'spacing_sm': '4px', 'spacing_md': '6px', 'spacing_lg': '8px', 'spacing_xl': '10px', 'spacing_xxl': '16px', 'radius_xxs': '1px', 'radius_xs': '2px', 'radius_sm': '4px', 'radius_md': '6px', 'radius_lg': '8px', 'radius_xl': '12px', 'radius_xxl': '22px', 'text_xxs': '10px', 'text_xs': '12px', 'text_sm': '14px', 'text_md': '16px', 'text_lg': '20px', 'text_xl': '24px', 'text_xxl': '28px', '_font': ['Syne V', {'name': 'Syne', 'weights': [400, 600]}, 'ui-sans-serif', 'system-ui'], '_font_mono': ['ui-monospace', {'name': 'Nunito Sans', 'weights': [400, 600]}], 'font': "Syne V, 'Syne', ui-sans-serif, system-ui", 'font_mono': "ui-monospace, 'Nunito Sans'", '_stylesheets': ['https://fonts.googleapis.com/css2?family=Syne:wght@400;600&display=swap', 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap'], 'body_background_fill': '#110F0F', 'body_background_fill_dark': '#110F0F', 'body_text_color': 'white', 'body_text_color_dark': 'white', 'body_text_size': '*text_md', 'body_text_weight': '400', 'embed_radius': '*radius_lg', 'color_accent': '*primary_500', 'color_accent_soft': '*primary_50', 'color_accent_soft_dark': '*neutral_700', 'background_fill_primary': '#110F0F', 'background_fill_primary_dark': '#110F0F', 'background_fill_secondary': '#110F0F', 'background_fill_secondary_dark': '#110F0F', 'border_color_accent': '*neutral_600', 'border_color_accent_dark': '*neutral_600', 'border_color_primary': '*neutral_800', 'border_color_primary_dark': '*neutral_800', 'link_text_color': '*secondary_500', 'link_text_color_active': '*secondary_500', 'link_text_color_active_dark': '*secondary_500', 'link_text_color_dark': '*secondary_500', 'link_text_color_hover': '*secondary_400', 'link_text_color_hover_dark': '*secondary_400', 'link_text_color_visited': '*secondary_600', 'link_text_color_visited_dark': '*secondary_600', 'body_text_color_subdued': '*neutral_400', 'body_text_color_subdued_dark': '*neutral_400', 'accordion_text_color': '*body_text_color', 'accordion_text_color_dark': '*body_text_color', 'table_text_color': '*body_text_color', 'table_text_color_dark': '*body_text_color', 'shadow_drop': 'rgba(0,0,0,0.05) 0px 1px 2px 0px', 'shadow_drop_lg': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)', 'shadow_inset': 'rgba(0,0,0,0.05) 0px 2px 4px 0px inset', 'shadow_spread': '3px', 'shadow_spread_dark': '1px', 'block_background_fill': '*neutral_800', 'block_background_fill_dark': '*neutral_800', 'block_border_color': '*border_color_primary', 'block_border_color_dark': '*border_color_primary', 'block_border_width': '1px', 'block_border_width_dark': '1px', 'block_info_text_color': '*body_text_color_subdued', 'block_info_text_color_dark': '*body_text_color_subdued', 'block_info_text_size': '*text_sm', 'block_info_text_weight': '400', 'block_label_background_fill': '*background_fill_primary', 'block_label_background_fill_dark': '*background_fill_secondary', 'block_label_border_color': '*border_color_primary', 'block_label_border_color_dark': '*border_color_primary', 'block_label_border_width': '1px', 'block_label_border_width_dark': '1px', 'block_label_shadow': '*block_shadow', 'block_label_text_color': '*#110F0F', 'block_label_text_color_dark': '*#110F0F', 'block_label_margin': '0', 'block_label_padding': '*spacing_sm *spacing_lg', 'block_label_radius': 'calc(*radius_lg - 1px) 0 calc(*radius_lg - 1px) 0', 'block_label_right_radius': '0 calc(*radius_lg - 1px) 0 calc(*radius_lg - 1px)', 'block_label_text_size': '*text_sm', 'block_label_text_weight': '400', 'block_padding': '*spacing_xl', 'block_radius': '*radius_md', 'block_shadow': 'none', 'block_shadow_dark': 'none', 'block_title_background_fill': 'rgb(255,255,255)', 'block_title_background_fill_dark': 'rgb(255,255,255)', 'block_title_border_color': 'none', 'block_title_border_color_dark': 'none', 'block_title_border_width': '0px', 'block_title_border_width_dark': None, 'block_title_text_color': '#110F0F', 'block_title_text_color_dark': '#110F0F', 'block_title_padding': '*block_label_padding', 'block_title_radius': '*block_label_radius', 'block_title_text_size': '*text_md', 'block_title_text_weight': '600', 'container_radius': '*radius_xl', 'form_gap_width': '0px', 'layout_gap': '*spacing_xxl', 'panel_background_fill': '*background_fill_secondary', 'panel_background_fill_dark': '*background_fill_secondary', 'panel_border_color': '*border_color_primary', 'panel_border_color_dark': '*border_color_primary', 'panel_border_width': '1px', 'panel_border_width_dark': '1px', 'section_header_text_size': '*text_md', 'section_header_text_weight': '400', 'border_color_accent_subdued': '*border_color_accent', 'border_color_accent_subdued_dark': '*border_color_accent', 'code_background_fill': '*neutral_100', 'code_background_fill_dark': '*neutral_800', 'chatbot_text_size': '*text_lg', 'checkbox_background_color': '*neutral_700', 'checkbox_background_color_dark': '*neutral_700', 'checkbox_background_color_focus': '*checkbox_background_color', 'checkbox_background_color_focus_dark': '*checkbox_background_color', 'checkbox_background_color_hover': '*checkbox_background_color', 'checkbox_background_color_hover_dark': '*checkbox_background_color', 'checkbox_background_color_selected': '*secondary_600', 'checkbox_background_color_selected_dark': '*secondary_600', 'checkbox_border_color': '*neutral_700', 'checkbox_border_color_dark': '*neutral_700', 'checkbox_border_color_focus': '*secondary_500', 'checkbox_border_color_focus_dark': '*secondary_500', 'checkbox_border_color_hover': '*neutral_600', 'checkbox_border_color_hover_dark': '*neutral_600', 'checkbox_border_color_selected': '*secondary_600', 'checkbox_border_color_selected_dark': '*secondary_600', 'checkbox_border_radius': '*radius_sm', 'checkbox_border_width': '*input_border_width', 'checkbox_border_width_dark': '*input_border_width', 'checkbox_label_background_fill': 'transparent', 'checkbox_label_background_fill_dark': 'transparent', 'checkbox_label_background_fill_hover': 'transparent', 'checkbox_label_background_fill_hover_dark': 'transparent', 'checkbox_label_background_fill_selected': 'transparent', 'checkbox_label_background_fill_selected_dark': 'transparent', 'checkbox_label_border_color': 'transparent', 'checkbox_label_border_color_dark': 'transparent', 'checkbox_label_border_color_hover': 'transparent', 'checkbox_label_border_color_hover_dark': 'transparent', 'checkbox_label_border_color_selected': '*checkbox_label_border_color', 'checkbox_label_border_color_selected_dark': '*checkbox_label_border_color', 'checkbox_label_border_width': 'transparent', 'checkbox_label_border_width_dark': 'transparent', 'checkbox_label_gap': '*spacing_lg', 'checkbox_label_padding': '*spacing_md calc(2 * *spacing_md)', 'checkbox_label_shadow': 'none', 'checkbox_label_text_size': '*text_md', 'checkbox_label_text_weight': '400', 'checkbox_check': 'url("data:image/svg+xml,%3csvg viewBox=\'0 0 16 16\' fill=\'white\' xmlns=\'http://www.w3.org/2000/svg\'%3e%3cpath d=\'M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z\'/%3e%3c/svg%3e")', 'radio_circle': 'url("data:image/svg+xml,%3csvg viewBox=\'0 0 16 16\' fill=\'white\' xmlns=\'http://www.w3.org/2000/svg\'%3e%3ccircle cx=\'8\' cy=\'8\' r=\'3\'/%3e%3c/svg%3e")', 'checkbox_shadow': '*input_shadow', 'checkbox_label_text_color': '*body_text_color', 'checkbox_label_text_color_dark': '*body_text_color', 'checkbox_label_text_color_selected': '*checkbox_label_text_color', 'checkbox_label_text_color_selected_dark': '*checkbox_label_text_color', 'error_background_fill': '*background_fill_primary', 'error_background_fill_dark': '*background_fill_primary', 'error_border_color': '*border_color_primary', 'error_border_color_dark': '*border_color_primary', 'error_border_width': '1px', 'error_border_width_dark': '1px', 'error_text_color': '#ef4444', 'error_text_color_dark': '#ef4444', 'error_icon_color': '#b91c1c', 'error_icon_color_dark': '#ef4444', 'input_background_fill': '*neutral_900', 'input_background_fill_dark': '*neutral_900', 'input_background_fill_focus': '*secondary_600', 'input_background_fill_focus_dark': '*secondary_600', 'input_background_fill_hover': '*input_background_fill', 'input_background_fill_hover_dark': '*input_background_fill', 'input_border_color': '*neutral_700', 'input_border_color_dark': '*neutral_700', 'input_border_color_focus': '*secondary_600', 'input_border_color_focus_dark': '*primary_600', 'input_border_color_hover': '*input_border_color', 'input_border_color_hover_dark': '*input_border_color', 'input_border_width': '1px', 'input_border_width_dark': '1px', 'input_padding': '*spacing_xl', 'input_placeholder_color': '*neutral_500', 'input_placeholder_color_dark': '*neutral_500', 'input_radius': '*radius_lg', 'input_shadow': 'none', 'input_shadow_dark': 'none', 'input_shadow_focus': '*input_shadow', 'input_shadow_focus_dark': '*input_shadow', 'input_text_size': '*text_md', 'input_text_weight': '400', 'loader_color': '*color_accent', 'loader_color_dark': '*color_accent', 'prose_text_size': '*text_md', 'prose_text_weight': '400', 'prose_header_text_weight': '600', 'slider_color': '#9E9E9E', 'slider_color_dark': '#9E9E9E', 'stat_background_fill': '*primary_500', 'stat_background_fill_dark': '*primary_500', 'table_border_color': '*neutral_700', 'table_border_color_dark': '*neutral_700', 'table_even_background_fill': '*neutral_950', 'table_even_background_fill_dark': '*neutral_950', 'table_odd_background_fill': '*neutral_900', 'table_odd_background_fill_dark': '*neutral_900', 'table_radius': '*radius_lg', 'table_row_focus': '*color_accent_soft', 'table_row_focus_dark': '*color_accent_soft', 'button_border_width': '*input_border_width', 'button_border_width_dark': '*input_border_width', 'button_cancel_background_fill': '*button_secondary_background_fill', 'button_cancel_background_fill_dark': '*button_secondary_background_fill', 'button_cancel_background_fill_hover': '*button_cancel_background_fill', 'button_cancel_background_fill_hover_dark': '*button_cancel_background_fill', 'button_cancel_border_color': '*button_secondary_border_color', 'button_cancel_border_color_dark': '*button_secondary_border_color', 'button_cancel_border_color_hover': '*button_cancel_border_color', 'button_cancel_border_color_hover_dark': '*button_cancel_border_color', 'button_cancel_text_color': '#110F0F', 'button_cancel_text_color_dark': '#110F0F', 'button_cancel_text_color_hover': '#110F0F', 'button_cancel_text_color_hover_dark': '#110F0F', 'button_cancel_shadow': '*button_secondary_shadow', 'button_cancel_shadow_hover': '*button_secondary_shadow_hover', 'button_cancel_shadow_active': '*button_secondary_shadow_active', 'button_cancel_shadow_dark': '*button_secondary_shadow', 'button_cancel_shadow_hover_dark': '*button_secondary_shadow_hover', 'button_cancel_shadow_active_dark': '*button_secondary_shadow_active', 'button_transform_hover': 'none', 'button_transform_active': 'none', 'button_transition': '0.3s ease all', 'button_large_padding': '*spacing_lg calc(2 * *spacing_lg)', 'button_large_radius': '*radius_lg', 'button_large_text_size': '*text_lg', 'button_large_text_weight': '600', 'button_primary_background_fill': '*primary_600', 'button_primary_background_fill_dark': '*primary_600', 'button_primary_background_fill_hover': '*primary_500', 'button_primary_background_fill_hover_dark': '*primary_500', 'button_primary_border_color': '*primary_500', 'button_primary_border_color_dark': '*primary_500', 'button_primary_border_color_hover': '*primary_400', 'button_primary_border_color_hover_dark': '*primary_400', 'button_primary_text_color': 'white', 'button_primary_text_color_dark': 'white', 'button_primary_text_color_hover': '#110F0F', 'button_primary_text_color_hover_dark': '#110F0F', 'button_primary_shadow': 'none', 'button_primary_shadow_hover': '*button_primary_shadow', 'button_primary_shadow_active': '*button_primary_shadow', 'button_primary_shadow_dark': None, 'button_primary_shadow_hover_dark': '*button_primary_shadow', 'button_primary_shadow_active_dark': '*button_primary_shadow', 'button_secondary_background_fill': 'transparent', 'button_secondary_background_fill_dark': 'transparent', 'button_secondary_background_fill_hover': '*neutral_800', 'button_secondary_background_fill_hover_dark': '*neutral_800', 'button_secondary_border_color': '*neutral_700', 'button_secondary_border_color_dark': '*neutral_700', 'button_secondary_border_color_hover': '*neutral_600', 'button_secondary_border_color_hover_dark': '*neutral_600', 'button_secondary_text_color': 'white', 'button_secondary_text_color_dark': 'white', 'button_secondary_text_color_hover': '*button_secondary_text_color', 'button_secondary_text_color_hover_dark': '*button_secondary_text_color', 'button_secondary_shadow': '*button_primary_shadow', 'button_secondary_shadow_hover': '*button_secondary_shadow', 'button_secondary_shadow_active': '*button_secondary_shadow', 'button_secondary_shadow_dark': None, 'button_secondary_shadow_hover_dark': '*button_secondary_shadow', 'button_secondary_shadow_active_dark': '*button_secondary_shadow', 'button_small_padding': '*spacing_sm calc(2 * *spacing_sm)', 'button_small_radius': '*radius_lg', 'button_small_text_size': '*text_md', 'button_small_text_weight': '400', 'button_medium_padding': '*spacing_md calc(2 * *spacing_md)', 'button_medium_radius': '*radius_md', 'button_medium_text_size': '*text_md', 'button_medium_text_weight': '600'})  
+    Returns:
+     - None
+
+ - predict(api_name="/compare_version") -> version_checker
+    Parameters:
+     - None
+    Returns:
+     - [Textbox] version_checker: str 
+
+ - predict(selected_language, api_name="/save_lang_settings") -> 
+    Parameters:
+     - [Dropdown] selected_language: Literal['Language automatically detected in the system', 'af_AF', 'am_AM', 'ar_AR', 'az_AZ', 'ba_BA', 'be_BE', 'bn_BN', 'bs_BS', 'ca_CA', 'ceb_CEB', 'cs_CS', 'de_DE', 'el_EL', 'en_US', 'es_ES', 'eu_EU', 'fa_FA', 'fj_FJ', 'fr_FR', 'ga_GA', 'gu_GU', 'he_HE', 'hi_IN', 'hr_HR', 'ht_HT', 'hu_HU', 'id_ID', 'it_IT', 'ja_JA', 'jv_JV', 'ko_KO', 'lt_LT', 'lv_LV', 'mg_MG', 'ml_IN', 'mr_MR', 'ms_MS', 'mt_MT', 'nl_NL', 'otq_OTQ', 'pa_PA', 'pl_PL', 'pt_BR', 'pt_PT', 'ro_RO', 'ru_RU', 'sk_SK', 'sm_SM', 'sr_RS', 'sw_SW', 'ta_IN', 'te_TE', 'th_TH', 'to_TO', 'tr_TR', 'uk_UK', 'ur_UR', 'vi_VI', 'wu_WU', 'zh_CN'] (not required, defaults to:   Language automatically detected in the system)  
+    Returns:
+     - None
+
+ - predict(api_name="/restart_applio") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(model_author, api_name="/set_model_author") -> output_information
+    Parameters:
+     - [Textbox] model_author: str (not required, defaults to:   None)  
+    Returns:
+     - [Textbox] output_information: str 
+
+ - predict(precision, api_name="/set_precision") -> output_information
+    Parameters:
+     - [Radio] precision: Literal['fp32', 'fp16', 'bf16'] (not required, defaults to:   fp16)  
+    Returns:
+     - [Textbox] output_information: str 
+
