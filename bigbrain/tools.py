@@ -6,6 +6,7 @@ from models import ask_deepseek, ask_qwen_coder
 
 from browser_use import Agent, Browser, BrowserProfile
 from browser_use.llm import ChatOllama
+from safety import is_safe_command
 
 BROWSER_SYSTEM_PROMPT = """
 You are Jarvis's browser agent.
@@ -80,22 +81,37 @@ def coding_tool(prompt: str):
 
     return ask_qwen_coder(prompt)
 
-
 def interpreter_tool(command: str):
 
-    try:
+    if not is_safe_command(command):
+        return f"""[INTERPRETER BLOCKED]
+            Reason: This command may be unsafe or needs confirmation.
+            Command was not executed.
+            Command:
+            {command}
+            """
 
+    try:
         result = subprocess.check_output(
             command,
             shell=True,
-            text=True
+            text=True,
+            stderr=subprocess.STDOUT
         )
+
+        if not result.strip():
+            return "[INTERPRETER] Command ran successfully with no output."
 
         return result
 
     except Exception as e:
+        return f"""[INTERPRETER ERROR]
+            Command:
+            {command}
 
-        return str(e)
+            Error:
+            {e}
+            """
 
 
 def reasoning_tool(prompt: str):

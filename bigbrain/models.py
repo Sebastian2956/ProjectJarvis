@@ -94,3 +94,36 @@ def rewrite_search_query(prompt: str):
     )
 
     return response["message"]["content"].strip()
+
+def rewrite_interpreter_command(prompt: str):
+
+    response = ollama.chat(
+        model="qwen2.5-coder:14b",
+        messages=[
+            {
+                "role": "system",
+                "content": """
+                    You rewrite local computer/terminal requests into safe Windows PowerShell commands.
+
+                    Return only one command.
+
+                    Rules:
+                    - Use conversation context to resolve vague references.
+                    - Do not explain.
+                    - Do not use markdown.
+                    - Avoid destructive commands.
+                    - If the command could delete, overwrite, format, kill important processes, expose secrets, or is ambiguous, return NEEDS_CONFIRMATION.
+                    """
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        options={
+            "num_ctx": 4096,
+            "temperature": 0.0
+        }
+    )
+
+    return response["message"]["content"].strip()

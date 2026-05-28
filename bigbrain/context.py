@@ -126,3 +126,53 @@ def build_search_rewrite_prompt(user_input: str):
         - Do not explain.
         - Return only the rewritten search query.
         """
+
+def build_interpreter_rewrite_prompt(user_input: str):
+    """
+    Builds a prompt that rewrites the user's local computer/terminal request
+    into a clean command using recent conversation.
+    """
+
+    recent_history = format_recent_history()
+
+    return f"""
+        Recent conversation:
+        {recent_history}
+
+        Current local computer/terminal request:
+        {user_input}
+
+        Rewrite the current request into ONE safe Windows PowerShell command.
+
+        Rules:
+        - Use the recent conversation to resolve words like it, that, this, there, the folder, the file.
+        - Return only the command.
+        - Do not explain.
+        - Do not include markdown.
+        - Do not wrap the command in backticks.
+        - Do not include dangerous destructive commands.
+        - If the request is not safe or not specific enough, return:
+        NEEDS_CONFIRMATION
+
+        Examples:
+
+        Recent conversation:
+        USER: my project is in C:\\AI\\ProjectJarvis
+        USER: show me the files in it
+
+        Output:
+        dir C:\\AI\\ProjectJarvis
+
+        Recent conversation:
+        USER: I am working in ProjectJarvis
+        USER: check what python version I have
+
+        Output:
+        python --version
+
+        Recent conversation:
+        USER: delete everything in that folder
+
+        Output:
+        NEEDS_CONFIRMATION
+        """
