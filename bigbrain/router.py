@@ -1,41 +1,49 @@
-# orchestrator/router.py
+# bigbrain/router.py
+
+from models import ask_deepseek_1_5
+
+
+SYSTEM_PROMPT = """
+You are Jarvis's router.
+
+Choose exactly ONE route:
+
+browser = user wants web/current info, search, browsing, URLs, websites
+coding = user wants code help, debugging, scripts, apps, APIs, databases
+interpreter = user wants local computer/terminal actions, files, folders, installs, commands
+reasoning = normal chat, explanations, planning, advice, concepts
+
+Rules:
+- Reply with only one lowercase word.
+- Valid replies: browser, coding, interpreter, reasoning
+- No explanation, punctuation, or extra text.
+- If unsure, choose reasoning.
+"""
 
 def route_request(user_input: str):
 
-    text = user_input.lower()
+    prompt = f"""
+        User request:
+        {user_input}
+    """
 
-    # Browser tasks
-    if any(word in text for word in [
-        "google",
-        "search",
-        "look up",
-        "browse",
-        "website"
-    ]):
-        return "browser"
+    response = ask_deepseek_1_5(
+        SYSTEM_PROMPT + prompt
+    )
 
-    # Coding tasks
-    elif any(word in text for word in [
-        "code",
-        "python",
-        "react",
-        "javascript",
-        "fix bug",
-        "program"
-    ]):
-        return "coding"
+    response = response.strip().lower()
 
-    # System/terminal tasks
-    elif any(word in text for word in [
-        "open",
-        "launch",
-        "terminal",
-        "file",
-        "folder",
-        "run command"
-    ]):
-        return "interpreter"
+    valid_routes = [
+        "browser",
+        "coding",
+        "interpreter",
+        "reasoning"
+    ]
 
-    # Default reasoning/chat
-    else:
-        return "reasoning"
+    for route in valid_routes:
+
+        if route in response:
+
+            return route
+
+    return "reasoning"

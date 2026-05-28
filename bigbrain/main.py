@@ -1,6 +1,8 @@
-# orchestrator/main.py
+# bigbrain/main.py
 
 from router import route_request
+
+from tools import TOOLS
 
 while True:
 
@@ -10,15 +12,8 @@ while True:
 
     print(f"\n[ROUTER] → {route}\n")
 
-    # Placeholder behavior
-    if route == "browser":
-        print("Would use browser tools here.")
+    tool = TOOLS[route]
 
-    elif route == "coding":
-        print("Would use coding model here.")
+    result = tool(user_input)
 
-    elif route == "interpreter":
-        print("Would use Open Interpreter here.")
-
-    else:
-        print("Would use DeepSeek reasoning here.")
+    print(result)
