@@ -1,23 +1,30 @@
 # bigbrain/router.py
 
-from models import ask_deepseek_1_5
-
+from models import ask_deepseek_light
 
 SYSTEM_PROMPT = """
 You are Jarvis's router.
 
-Choose exactly ONE route:
+Return exactly ONE route:
+browser
+coding
+interpreter
+reasoning
 
-browser = user wants web/current info, search, browsing, URLs, websites
-coding = user wants code help, debugging, scripts, apps, APIs, databases
-interpreter = user wants local computer/terminal actions, files, folders, installs, commands
-reasoning = normal chat, explanations, planning, advice, concepts
+Definitions:
+browser = any request that asks to search, look up, find online/current/recent/latest info, open a URL, browse a site, check a release date, reviews, prices, versions, news, drivers, documentation, or anything that may have changed over time
+coding = writing/debugging/explaining/refactoring code, apps, APIs, databases, scripts, architecture
+interpreter = local computer actions: terminal commands, files/folders, installs, launching apps, checking versions, running scripts
+reasoning = normal chat, conceptual explanations, opinions, planning, advice, comparisons that do NOT require current web info or local execution
 
-Rules:
-- Reply with only one lowercase word.
-- Valid replies: browser, coding, interpreter, reasoning
-- No explanation, punctuation, or extra text.
-- If unsure, choose reasoning.
+Priority rules:
+1. If the user says search, look up, find, browse, website, URL, latest, current, recent, online, release date, price, reviews, news, version, or driver → browser
+2. If the user wants a local command/action → interpreter
+3. If the user wants code help → coding
+4. Otherwise → reasoning
+
+Only output one lowercase route word.
+No explanation.
 """
 
 def route_request(user_input: str):
@@ -27,7 +34,7 @@ def route_request(user_input: str):
         {user_input}
     """
 
-    response = ask_deepseek_1_5(
+    response = ask_deepseek_light(
         SYSTEM_PROMPT + prompt
     )
 

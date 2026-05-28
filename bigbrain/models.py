@@ -20,10 +20,10 @@ def ask_deepseek(prompt: str):
 
     return response["message"]["content"]
 
-def ask_deepseek_1_5(prompt: str):
+def ask_deepseek_light(prompt: str):
 
     response = ollama.chat(
-        model="deepseek-r1:1.5b",
+        model="deepseek-r1:7b",
         messages=[
             {
                 "role": "user",
@@ -66,9 +66,31 @@ def ask_qwen_coder(prompt: str):
             }
         ],
         options={
-            "num_ctx": 8192,
+            "num_ctx": 4096,
             "temperature": 0.2
         }
     )
 
     return response["message"]["content"]
+
+def rewrite_search_query(prompt: str):
+
+    response = ollama.chat(
+        model="qwen2.5-coder:14b",
+        messages=[
+            {
+                "role": "system",
+                "content": "You rewrite user browser/search requests into clean standalone search queries. Return only the query."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        options={
+            "num_ctx": 4096,
+            "temperature": 0.1
+        }
+    )
+
+    return response["message"]["content"].strip()

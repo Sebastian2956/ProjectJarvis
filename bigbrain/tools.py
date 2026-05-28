@@ -1,54 +1,62 @@
-# bigbrain/tools.py
 import asyncio
 import subprocess
+from urllib.parse import quote_plus
+
 from models import ask_deepseek, ask_qwen_coder
+
 from browser_use import Agent, Browser, BrowserProfile
 from browser_use.llm import ChatOllama
 
 BROWSER_SYSTEM_PROMPT = """
 You are Jarvis's browser agent.
 
-You must follow these rules:
-
+Rules:
 1. Prefer direct URLs over typing into search boxes.
-2. For search tasks, use DuckDuckGo direct search URLs:
-   https://duckduckgo.com/?q=<url_encoded_query>
+2. Use DuckDuckGo for search tasks unless the user explicitly asks for another site.
 3. Do NOT use Google unless explicitly requested.
-4. Do NOT use Bing if Google/DuckDuckGo fail unless explicitly requested.
+4. Do NOT use Bing unless explicitly requested.
 5. Do NOT click autocomplete suggestions unless absolutely necessary.
 6. If a page shows CAPTCHA, Cloudflare, 403 Forbidden, or an error page:
    - stop using that site immediately
-   - try a different allowed source
    - do not repeatedly retry the same blocked site
 7. As soon as you find the requested answer:
    - call done
    - return only the useful final answer
    - do not continue browsing
-8. If the task is a simple factual lookup, keep the answer short.
-9. Never browse after the answer is visible.
+8. Keep simple factual answers short.
 """
+
 
 browser_llm = ChatOllama(
     model="qwen2.5-coder:14b",
 )
 
-browser = Browser(
-    browser_profile=BrowserProfile(
-        headless=False
-    )
-)
+
+def build_browser_task(user_request: str):
+
+    search_url = f"https://duckduckgo.com/?q={quote_plus(user_request)}"
+
+    return f"""
+{BROWSER_SYSTEM_PROMPT}
+
+User request:
+{user_request}
+
+Start by navigating directly to:
+{search_url}
+"""
+
 
 async def run_browser_agent(user_request: str):
 
-    task = f"""
-    {BROWSER_SYSTEM_PROMPT}
-
-    User request:
-    {user_request}
-    """
+    browser = Browser(
+        browser_profile=BrowserProfile(
+            headless=False
+        )
+    )
 
     agent = Agent(
-        task=task,
+        task=build_browser_task(user_request),
         llm=browser_llm,
         browser=browser,
         max_actions_per_step=1,
