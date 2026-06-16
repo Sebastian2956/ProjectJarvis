@@ -60,6 +60,7 @@ async def run_browser_agent(user_request: str):
         task=build_browser_task(user_request),
         llm=browser_llm,
         browser=browser,
+        use_vision=False,
         max_actions_per_step=1,
         max_failures=3,
     )
@@ -93,8 +94,14 @@ def interpreter_tool(command: str):
 
     try:
         result = subprocess.check_output(
-            command,
-            shell=True,
+            [
+                "powershell",
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                command
+            ],
             text=True,
             stderr=subprocess.STDOUT
         )

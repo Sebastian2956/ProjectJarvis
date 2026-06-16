@@ -8,6 +8,7 @@ __pycache__/
 
 # Virtual Environments
 agent_venv/
+memory_venv/
 stt_venv/
 tts_venv/
 venv/
@@ -56,7 +57,7 @@ models/
 # =========================
 # AUDIO OUTPUTS
 # =========================
-audio/output.wav
+audio/
 audio/*.mp3
 audio/generated/
 
