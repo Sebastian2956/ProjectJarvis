@@ -31,16 +31,6 @@ RVC_INDEX = r"C:\AI\Tools\ApplioV3.6.2\logs\JarvisV2\JarvisV2.index"
 
 SPEAKER_WAVS = [
     rf"{PROJECT_ROOT}\voices\JarvisV2\JarvisVoice_clean.wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_As You Wish .wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_At Your Service Sir.wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_Creating A Flight Plan.wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_Device That's Keeping You Alive.wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_He Is Insisting .wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_I Have Run Simulation .wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_Impossible To Synthesize.wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_May I Remind You.wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_Running Out Of Both Time And Action .wav",
-    rf"{PROJECT_ROOT}\voices\JarvisBackUp\Voicy_What Is It You Are Trying To Achieve Sir_.wav"
 ]
 
 

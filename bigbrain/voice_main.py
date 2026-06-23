@@ -100,7 +100,7 @@ def main():
             break
 
         response = handle_user_input(
-            command + "\n\nVoice mode instruction: respond briefly, naturally, and conversationally. Keep it under two short sentences unless I ask for detail."
+            command + "\n\nVoice mode instruction: respond briefly, naturally, and conversationally. Keep it under two short sentences unless I ask for detail and don't use emojis."
         )
 
         print(f"\nJarvis: {response}\n")
