@@ -1,53 +1,83 @@
 # bigbrain/voice_client.py
 
-import json
-import subprocess
+import requests
 
 
-STT_PYTHON = r"C:\AI\ProjectJarvis\stt_venv\Scripts\python.exe"
-TTS_PYTHON = r"C:\AI\ProjectJarvis\tts_venv\Scripts\python.exe"
+STT_SERVER_URL = "http://127.0.0.1:7020"
+TTS_SERVER_URL = "http://127.0.0.1:7030"
 
-STT_WORKER = r"C:\AI\ProjectJarvis\bigbrain\stt_worker.py"
-TTS_WORKER = r"C:\AI\ProjectJarvis\bigbrain\tts_worker.py"
+def clean_text_for_speech(text: str):
+    cleaned = text
 
+    replacements = {
+        "```": "",
+        "`": "",
+        "*": "",
+        "#": "",
+        "\\": " backslash ",
+        "/": " slash ",
+        "C:": "C drive",
+        "\n": " ",
+        "[ROUTER]": "",
+        "COMMAND RUN:": "Command run.",
+        "RAW OUTPUT:": "Raw output.",
+        "SUMMARY:": "Summary.",
+    }
 
-def extract_json_from_output(output: str):
-    lines = output.strip().splitlines()
+    for old, new in replacements.items():
+        cleaned = cleaned.replace(old, new)
 
-    for line in reversed(lines):
-        line = line.strip()
+    while "  " in cleaned:
+        cleaned = cleaned.replace("  ", " ")
 
-        if line.startswith("{") and line.endswith("}"):
-            return json.loads(line)
+    return cleaned.strip()
 
-    raise ValueError(f"No JSON object found in worker output:\n{output}")
+def listen_once(duration: float = 8):
+    try:
+        response = requests.post(
+            f"{STT_SERVER_URL}/listen",
+            json={
+                "duration": duration
+            },
+            timeout=duration + 60
+        )
 
+        data = response.json()
 
-def listen_once():
-    result = subprocess.check_output(
-        [STT_PYTHON, STT_WORKER],
-        text=True,
-        stderr=subprocess.STDOUT
-    )
+        if not data.get("ok"):
+            print("[STT ERROR]", data.get("error"))
+            return ""
 
-    response = extract_json_from_output(result)
+        return data.get("text", "").strip()
 
-    if not response.get("ok"):
+    except Exception as e:
+        print("[STT ERROR]", e)
         return ""
-
-    return response.get("text", "").strip()
 
 
 def speak(text: str):
-    result = subprocess.check_output(
-        [TTS_PYTHON, TTS_WORKER, text],
-        text=True,
-        stderr=subprocess.STDOUT
-    )
+    try:
+        text = clean_text_for_speech(text)
 
-    response = extract_json_from_output(result)
+        response = requests.post(
+            f"{TTS_SERVER_URL}/speak",
+            json={
+                "text": text,
+                "play_audio": True
+            },
+            timeout=300
+        )
 
-    if not response.get("ok"):
-        print("[TTS ERROR]", response.get("error"))
+        data = response.json()
 
-    return response
+        if not data.get("ok"):
+            print("[TTS ERROR]", data.get("error"))
+
+        return data
+
+    except Exception as e:
+        print("[TTS ERROR]", e)
+        return {
+            "ok": False,
+            "error": str(e)
+        }

@@ -21,16 +21,16 @@ tts = TTS(
 tts.tts_to_file(
     text="Hello Sebastian. Systems are now fully operational. My name is Jarvis. How can I assist you today?",
     speaker_wav= [
-        "voices\Jarvis\Voicy_As You Wish .wav",
-        "voices\Jarvis\Voicy_At Your Service Sir.wav",
-        "voices\Jarvis\Voicy_Creating A Flight Plan.wav",
-        "voices\Jarvis\Voicy_Device That's Keeping You Alive.wav",
-        "voices\Jarvis\Voicy_He Is Insisting .wav",
-        "voices\Jarvis\Voicy_I Have Run Simulation .wav",
-        "voices\Jarvis\Voicy_Impossible To Synthesize.wav",
-        "voices\Jarvis\Voicy_May I Remind You.wav",
-        "voices\Jarvis\Voicy_Running Out Of Both Time And Action .wav",
-        "voices\Jarvis\Voicy_What Is It You Are Trying To Achieve Sir_.wav"
+        "voices\JarvisBackUp\Voicy_As You Wish .wav",
+        "voices\JarvisBackUp\Voicy_At Your Service Sir.wav",
+        "voices\JarvisBackUp\Voicy_Creating A Flight Plan.wav",
+        "voices\JarvisBackUp\Voicy_Device That's Keeping You Alive.wav",
+        "voices\JarvisBackUp\Voicy_He Is Insisting .wav",
+        "voices\JarvisBackUp\Voicy_I Have Run Simulation .wav",
+        "voices\JarvisBackUp\Voicy_Impossible To Synthesize.wav",
+        "voices\JarvisBackUp\Voicy_May I Remind You.wav",
+        "voices\JarvisBackUp\Voicy_Running Out Of Both Time And Action .wav",
+        "voices\JarvisBackUp\Voicy_What Is It You Are Trying To Achieve Sir_.wav"
     ],
     language="en",
     file_path="audio/output.wav"
