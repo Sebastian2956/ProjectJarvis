@@ -4,8 +4,7 @@ from urllib.parse import quote_plus
 
 from models import ask_deepseek, ask_qwen_coder
 
-from browser_use import Agent, Browser, BrowserProfile
-from browser_use.llm import ChatOllama
+from config import OLLAMA_MODEL_BROWSER
 from safety import is_safe_command
 
 BROWSER_SYSTEM_PROMPT = """
@@ -28,9 +27,20 @@ Rules:
 """
 
 
-browser_llm = ChatOllama(
-    model="qwen2.5-coder:14b",
-)
+browser_llm = None
+
+
+def get_browser_llm():
+    global browser_llm
+
+    if browser_llm is None:
+        from browser_use.llm import ChatOllama
+
+        browser_llm = ChatOllama(
+            model=OLLAMA_MODEL_BROWSER,
+        )
+
+    return browser_llm
 
 
 def build_browser_task(user_request: str):
@@ -49,6 +59,7 @@ Start by navigating directly to:
 
 
 async def run_browser_agent(user_request: str):
+    from browser_use import Agent, Browser, BrowserProfile
 
     browser = Browser(
         browser_profile=BrowserProfile(
@@ -58,7 +69,7 @@ async def run_browser_agent(user_request: str):
 
     agent = Agent(
         task=build_browser_task(user_request),
-        llm=browser_llm,
+        llm=get_browser_llm(),
         browser=browser,
         use_vision=False,
         max_actions_per_step=1,

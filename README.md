@@ -65,10 +65,11 @@ The code uses Windows-specific modules and paths, including `winsound`, PowerShe
 Install Ollama, then pull the models used by `bigbrain/models.py`:
 
 ```powershell
-ollama pull deepseek-r1:14b
 ollama pull deepseek-r1:7b
 ollama pull qwen2.5-coder:14b
 ```
+
+The default conversational and routing model is `deepseek-r1:7b` for lower voice latency. Keep `qwen2.5-coder:14b` for coding, browser-agent, and PowerShell command rewrite tasks. Larger DeepSeek models can remain installed for experiments, but they are no longer the default voice path.
 
 Make sure the Ollama service is running before starting Jarvis.
 
@@ -243,12 +244,12 @@ Shutdown commands include:
 | TTS server | `bigbrain/tts_server.py` | `7030` |
 | Applio | External app | `6969` |
 
-The clients are currently configured with fixed localhost URLs:
+The clients default to localhost URLs:
 
 - `bigbrain/memory_client.py`
 - `bigbrain/voice_client.py`
 
-Change those files if you move services to different hosts or ports.
+Set `JARVIS_STT_URL` or `JARVIS_TTS_URL` if you move the STT or TTS services to different hosts or ports.
 
 ## How Routing Works
 
@@ -291,15 +292,18 @@ python scripts\memory_test.py
 
 ## Voice Pipeline
 
-Voice mode flows through these steps:
+Voice mode streams the LLM response sentence by sentence, then pipelines each sentence through TTS, RVC, and ordered playback:
 
 ```text
 microphone
   -> STT server / faster-whisper
   -> jarvis_core router and tools
-  -> TTS server / XTTS v2
-  -> Applio RVC conversion
-  -> audio playback
+  -> Ollama stream=True
+  -> sentence boundary buffer
+  -> queued TTS utterance chunks
+      -> XTTS worker
+      -> Applio RVC worker
+      -> ordered playback worker
 ```
 
 Generated audio files are written under `audio/`:
@@ -307,6 +311,16 @@ Generated audio files are written under `audio/`:
 - `audio\mic_input.wav`
 - `audio\output.wav`
 - `audio\jarvis_final.wav`
+- `audio\stream\*_xtts.wav`
+- `audio\stream\*_final.wav`
+
+The legacy `POST /speak` endpoint still accepts a full text response. Streaming voice mode uses:
+
+- `POST /utterance/start`
+- `POST /utterance/chunk`
+- `POST /utterance/finish`
+
+Set `JARVIS_PROFILE=1` before starting `voice_main.py` to print per-interaction timing for STT, routing, LLM streaming, TTS/RVC/playback, first audible response, and complete spoken response.
 
 Reference voice samples are stored under `voices/`.
 
@@ -336,6 +350,18 @@ Several values are currently hard-coded:
 - Whisper cache path: `C:\AI\ProjectJarvis\models\whisper`
 - RVC model and index paths in `bigbrain\tts_server.py`
 - STT/TTS device settings use CUDA by default
+
+Runtime environment overrides are centralized in `bigbrain\config.py`:
+
+- `JARVIS_PROFILE=1` prints latency timings after each voice interaction
+- `JARVIS_MODEL_GENERAL` defaults to `deepseek-r1:7b`
+- `JARVIS_MODEL_ROUTER` defaults to `deepseek-r1:7b`
+- `JARVIS_MODEL_CODING` defaults to `qwen2.5-coder:14b`
+- `JARVIS_MODEL_SEARCH_REWRITE` defaults to `deepseek-r1:7b`
+- `JARVIS_MODEL_INTERPRETER_REWRITE` defaults to `qwen2.5-coder:14b`
+- `JARVIS_MODEL_BROWSER` defaults to `qwen2.5-coder:14b`
+- `JARVIS_OLLAMA_KEEP_ALIVE` defaults to `10m`
+- `JARVIS_PLAYBACK_LEAD_IN_MS` defaults to `180` to avoid clipping the first syllable of short streamed audio chunks
 
 If you fork the project and clone it somewhere else, update these files first:
 
@@ -368,7 +394,6 @@ Before exposing this assistant to other users or network access:
 Pull the missing model:
 
 ```powershell
-ollama pull deepseek-r1:14b
 ollama pull deepseek-r1:7b
 ollama pull qwen2.5-coder:14b
 ```

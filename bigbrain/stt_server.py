@@ -1,6 +1,7 @@
 # bigbrain/stt_server.py
 
 import json
+import time
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 
 import sounddevice as sd
@@ -51,6 +52,8 @@ class STTHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         try:
+            request_start = time.perf_counter()
+
             if self.path != "/listen":
                 self._send_json({
                     "ok": False,
@@ -63,6 +66,7 @@ class STTHandler(BaseHTTPRequestHandler):
 
             print(f"Recording for {duration} seconds...")
 
+            record_start = time.perf_counter()
             audio = sd.rec(
                 int(duration * SAMPLE_RATE),
                 samplerate=SAMPLE_RATE,
@@ -71,11 +75,15 @@ class STTHandler(BaseHTTPRequestHandler):
             )
 
             sd.wait()
+            record_end = time.perf_counter()
 
+            write_start = time.perf_counter()
             sf.write(AUDIO_PATH, audio, SAMPLE_RATE)
+            write_end = time.perf_counter()
 
             print("Transcribing...")
 
+            transcribe_start = time.perf_counter()
             segments, info = model.transcribe(
                 AUDIO_PATH,
                 vad_filter=True
@@ -87,13 +95,20 @@ class STTHandler(BaseHTTPRequestHandler):
                 text_parts.append(segment.text.strip())
 
             text = " ".join(text_parts).strip()
+            transcribe_end = time.perf_counter()
 
             print(f"Heard: {text}")
 
             self._send_json({
                 "ok": True,
                 "text": text,
-                "language": info.language
+                "language": info.language,
+                "timings": {
+                    "record_s": record_end - record_start,
+                    "write_s": write_end - write_start,
+                    "transcribe_s": transcribe_end - transcribe_start,
+                    "total_s": time.perf_counter() - request_start
+                }
             })
 
         except Exception as e:
