@@ -26,7 +26,7 @@ JARVIS_FINAL = rf"{PROJECT_ROOT}\audio\jarvis_final.wav"
 
 APPLIO_URL = "http://127.0.0.1:6969/"
 
-RVC_MODEL = r"C:\AI\Tools\ApplioV3.6.2\logs\JarvisV2\JarvisV2_200e_1200s.pth"
+RVC_MODEL = r"C:\AI\Tools\ApplioV3.6.2\logs\JarvisV2\JarvisV2_200e_28200s.pth"
 RVC_INDEX = r"C:\AI\Tools\ApplioV3.6.2\logs\JarvisV2\JarvisV2.index"
 
 SPEAKER_WAVS = [
